@@ -13,7 +13,8 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author diego
  */
-public class Cls_consultaLabs_V1_3_1{
+public class Cls_consultaLabs_V1_3_1 {
+
     public static void mtd_cargarDatosA_Modelo(DefaultTableModel modeloDefault) {
         modeloDefault.setRowCount(0);
         File carpeta = new File("C:/Users/diego/OneDrive/Desktop/Ucato/Base de Datos CMI/Laboratorios");
@@ -45,7 +46,7 @@ public class Cls_consultaLabs_V1_3_1{
                                     email = linea.split(":")[1].trim();
                                 } else if (linea.startsWith("Sucursal : ")) {
                                     sucursalDir = linea.split(":")[1].trim();
-                                } 
+                                }
                             }
 
                             modeloDefault.addRow(new Object[]{

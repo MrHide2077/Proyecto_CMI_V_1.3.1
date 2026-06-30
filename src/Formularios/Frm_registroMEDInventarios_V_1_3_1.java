@@ -4,8 +4,7 @@
  */
 package Formularios;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.text.ParseException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -128,12 +127,15 @@ public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFra
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton3.setText("Editar");
+        jButton3.addActionListener(this::jButton3ActionPerformed);
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton4.setText("Eliminar");
+        jButton4.addActionListener(this::jButton4ActionPerformed);
 
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton5.setText("Guardar");
+        jButton5.addActionListener(this::jButton5ActionPerformed);
 
         tab_regisMedInv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -183,18 +185,17 @@ public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFra
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txt_loteFab, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                                     .addComponent(txt_cantidad)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txt_loteInt, javax.swing.GroupLayout.Alignment.LEADING, 0, 1, Short.MAX_VALUE)
-                                        .addComponent(txt_fechaVence, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                        .addComponent(txt_fechaIngreso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                        .addComponent(txt_unitDosis, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txt_present, javax.swing.GroupLayout.Alignment.LEADING, 0, 1, Short.MAX_VALUE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(txt_lab, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(btn_Blab, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
-                                        .addComponent(txt_princAct, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txt_nombComer, javax.swing.GroupLayout.Alignment.LEADING)))))))
+                                    .addComponent(txt_loteInt, 0, 1, Short.MAX_VALUE)
+                                    .addComponent(txt_fechaVence, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                    .addComponent(txt_fechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                    .addComponent(txt_unitDosis)
+                                    .addComponent(txt_present, 0, 1, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txt_lab, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btn_Blab, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                                    .addComponent(txt_princAct)
+                                    .addComponent(txt_nombComer))))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1)
                 .addContainerGap())
@@ -262,10 +263,10 @@ public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFra
         pack();
     }// </editor-fold>//GEN-END:initComponents
     DefaultTableModel modelo;
-    Clases.Cls_registroInMED objeto=new Clases.Cls_registroInMED();
+    Clases.Cls_registroInMED_V_1_3_1 objeto = new Clases.Cls_registroInMED_V_1_3_1();
     java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
-    
-    public void mtd_limpieza(){
+
+    public void mtd_limpieza() {
         txt_nombComer.setText("");
         txt_princAct.setText("");
         txt_lab.setText("");
@@ -277,73 +278,74 @@ public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFra
         txt_loteFab.setText("");
         txt_cantidad.setText("");
     }
-    
-    public boolean mtd_duplicado(){
-        boolean duplicado=false;
-        String idNuevo=String.valueOf(objeto.getInMED_idInterno());
-        
-        for(int i=0; i<tab_regisMedInv.getRowCount(); i++){
+
+    public boolean mtd_duplicado() {
+        boolean duplicado = false;
+        String idNuevo = String.valueOf(objeto.getInMED_idInterno());
+
+        for (int i = 0; i < tab_regisMedInv.getRowCount(); i++) {
             String idTabla = String.valueOf(tab_regisMedInv.getValueAt(i, 0));
-            if(idTabla.equals(idNuevo)){
-                duplicado=true;
+            if (idTabla.equals(idNuevo)) {
+                duplicado = true;
                 break;
             }
         }
-      return duplicado;
+        return duplicado;
     }
-    
-    public void mtd_encabezado(){
-        String titulos[]={"ID", "N.Comercial", "P.Activo", "Laboratorio", "Presentación", "Unidades/Dosis", "F. Ingreso", "F. Vence", "Lote Int.", "Lote Fab", "Stock"};
-        modelo=new DefaultTableModel(null, titulos);
+
+    public void mtd_encabezado() {
+        String titulos[] = {"ID", "N.Comercial", "P.Activo", "Laboratorio", "Presentación", "Unidades/Dosis", "F. Ingreso", "F. Vence", "Lote Int.", "Lote Fab", "Stock"};
+        modelo = new DefaultTableModel(null, titulos);
         tab_regisMedInv.setModel(modelo);
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int filaSel=tab_regisMedInv.getSelectedRow();
-        try{
-            if(txt_nombComer.getText().trim().isEmpty()){
-               txt_nombComer.requestFocus();
-               throw new IllegalArgumentException("Ingrese el Nombre Comercial");
+        int filaSel = tab_regisMedInv.getSelectedRow();
+        try {
+            if (txt_nombComer.getText().trim().isEmpty()) {
+                txt_nombComer.requestFocus();
+                throw new IllegalArgumentException("Ingrese el Nombre Comercial");
             }
-            if(txt_princAct.getText().trim().isEmpty()){
-               txt_princAct.requestFocus();
-               throw new IllegalArgumentException("Ingrese el Principio Activo");
+            if (txt_princAct.getText().trim().isEmpty()) {
+                txt_princAct.requestFocus();
+                throw new IllegalArgumentException("Ingrese el Principio Activo");
             }
-            if(txt_lab.getText().trim().isEmpty()){
-               txt_lab.requestFocus();
-               throw new IllegalArgumentException("Ingrese el Laboratorio de Origen");
+            if (txt_lab.getText().trim().isEmpty()) {
+                txt_lab.requestFocus();
+                throw new IllegalArgumentException("Ingrese el Laboratorio de Origen");
             }
-            if(txt_present.getSelectedIndex()==0){
-               txt_present.requestFocus();
-               throw new IllegalArgumentException("Seleccione el Tipo de Presentación");
+            if (txt_present.getSelectedIndex() == 0) {
+                txt_present.requestFocus();
+                throw new IllegalArgumentException("Seleccione el Tipo de Presentación");
             }
-            if(txt_unitDosis.getText().trim().isEmpty()){
-               txt_unitDosis.requestFocus();
-               throw new IllegalArgumentException("Ingrese las Unidades/Dosis");
+            if (txt_unitDosis.getText().trim().isEmpty()) {
+                txt_unitDosis.requestFocus();
+                throw new IllegalArgumentException("Ingrese las Unidades/Dosis");
             }
-            if(txt_fechaIngreso.getDate()==null){
-               txt_fechaIngreso.requestFocus();
-               throw new IllegalArgumentException("Ingrese la Fecha de Ingreso");
+            if (txt_fechaIngreso.getDate() == null) {
+                txt_fechaIngreso.requestFocus();
+                throw new IllegalArgumentException("Ingrese la Fecha de Ingreso");
             }
-            if(txt_fechaVence.getDate()==null){
-               txt_fechaVence.requestFocus();
-               throw new IllegalArgumentException("Ingrese la Fecha de Vencimiento");
+            if (txt_fechaVence.getDate() == null) {
+                txt_fechaVence.requestFocus();
+                throw new IllegalArgumentException("Ingrese la Fecha de Vencimiento");
             }
-            if(txt_loteInt.getSelectedIndex()==0){
-               txt_loteInt.requestFocus();
-               throw new IllegalArgumentException("Seleccione el Lote Destino");
+            if (txt_loteInt.getSelectedIndex() == 0) {
+                txt_loteInt.requestFocus();
+                throw new IllegalArgumentException("Seleccione el Lote Destino");
             }
-            if(txt_loteFab.getText().trim().isEmpty()){
-               txt_loteFab.requestFocus();
-               throw new IllegalArgumentException("Ingrese el Lote del Fabricante");
+            if (txt_loteFab.getText().trim().isEmpty()) {
+                txt_loteFab.requestFocus();
+                throw new IllegalArgumentException("Ingrese el Lote del Fabricante");
             }
-            if(txt_cantidad.getText().trim().isEmpty()){
-               txt_cantidad.requestFocus();
-               throw new IllegalArgumentException("Ingrese la cantidad");
+            if (txt_cantidad.getText().trim().isEmpty()) {
+                txt_cantidad.requestFocus();
+                throw new IllegalArgumentException("Ingrese la cantidad");
             }
-            if(filaSel!= -1){
-                
+            if (filaSel != -1) {
+                String idExistente = tab_regisMedInv.getValueAt(filaSel, 0).toString();
 
+                tab_regisMedInv.setValueAt(idExistente, filaSel, 0);
                 tab_regisMedInv.setValueAt(txt_nombComer.getText(), filaSel, 1);
                 tab_regisMedInv.setValueAt(txt_princAct.getText(), filaSel, 2);
                 tab_regisMedInv.setValueAt(txt_lab.getText(), filaSel, 3);
@@ -354,9 +356,9 @@ public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFra
                 tab_regisMedInv.setValueAt(txt_loteInt.getSelectedItem(), filaSel, 8);
                 tab_regisMedInv.setValueAt(txt_loteFab.getText(), filaSel, 9);
                 tab_regisMedInv.setValueAt(String.valueOf(txt_cantidad.getText()), filaSel, 10);
-                
+                JOptionPane.showMessageDialog(null, "Registro :" + idExistente);
                 mtd_limpieza();
-            }else{
+            } else {
                 java.time.LocalDate localFechaIngreso = null;
                 java.time.LocalDate localFechaVence = null;
 
@@ -374,7 +376,7 @@ public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFra
                 } catch (NumberFormatException e) {
                 }
 
-                Clases.Cls_registroInMED objeto1 = new Clases.Cls_registroInMED(
+                Clases.Cls_registroInMED_V_1_3_1 objeto1 = new Clases.Cls_registroInMED_V_1_3_1(
                         txt_nombComer.getText(),
                         txt_princAct.getText(),
                         txt_lab.getText(),
@@ -385,8 +387,8 @@ public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFra
                         txt_loteInt.getSelectedItem().toString(),
                         txt_loteFab.getText(),
                         cantDouble
-                );                
-                modelo=(DefaultTableModel)tab_regisMedInv.getModel();
+                );
+                modelo = (DefaultTableModel) tab_regisMedInv.getModel();
                 Object nuevaFila[] = {
                     objeto1.getInMED_idInterno(),
                     objeto1.getInMED_nombComer(),
@@ -409,6 +411,83 @@ public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFra
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error de Validación", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int filaSel = tab_regisMedInv.getSelectedRow();
+        try {
+            if (filaSel != -1) {
+                txt_nombComer.setText(tab_regisMedInv.getValueAt(filaSel, 1).toString());
+                txt_princAct.setText(tab_regisMedInv.getValueAt(filaSel, 2).toString());
+                txt_lab.setText(tab_regisMedInv.getValueAt(filaSel, 3).toString());
+                txt_present.setSelectedItem(tab_regisMedInv.getValueAt(filaSel, 4).toString());
+                txt_unitDosis.setText(tab_regisMedInv.getValueAt(filaSel, 5).toString());
+                java.util.Date fecha = sdf.parse(tab_regisMedInv.getValueAt(filaSel, 6).toString());
+                txt_fechaIngreso.setDate(fecha);
+                java.util.Date fecha2 = sdf.parse(tab_regisMedInv.getValueAt(filaSel, 7).toString());
+                txt_fechaVence.setDate(fecha2);
+                txt_loteInt.setSelectedItem(tab_regisMedInv.getValueAt(filaSel, 8).toString());
+                txt_loteFab.setText(tab_regisMedInv.getValueAt(filaSel, 9).toString());
+                txt_cantidad.setText(tab_regisMedInv.getValueAt(filaSel, 10).toString());
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione una Fila");
+            }
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(null, "Error en el Formado de Fecha dd/mm/aaaa");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Ingrese una Cantidad Valida");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        int filaSel = tab_regisMedInv.getSelectedRow();
+        try {
+            if (filaSel != -1) {
+                int opcion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este registro?");
+                if (opcion == 0) {
+                    modelo = (DefaultTableModel) tab_regisMedInv.getModel();
+                    String idEliminado = tab_regisMedInv.getValueAt(filaSel, 0).toString();
+                    modelo.removeRow(filaSel);
+                    JOptionPane.showMessageDialog(null, "Registro :" + idEliminado + " Eliminado Correctamente");
+                    mtd_limpieza();
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error Desconocido :" + e.getMessage());
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        int filaSel = tab_regisMedInv.getSelectedRow();
+        try {
+            if (filaSel != -1) {
+                Clases.Cls_registroInMED_V_1_3_1 objeto2 = new Clases.Cls_registroInMED_V_1_3_1(
+                        tab_regisMedInv.getValueAt(filaSel, 0).toString(),
+                        tab_regisMedInv.getValueAt(filaSel, 1).toString(),
+                        tab_regisMedInv.getValueAt(filaSel, 2).toString(),
+                        tab_regisMedInv.getValueAt(filaSel, 3).toString(),
+                        tab_regisMedInv.getValueAt(filaSel, 4).toString(),
+                        tab_regisMedInv.getValueAt(filaSel, 5).toString(),
+                        java.time.LocalDate.parse(tab_regisMedInv.getValueAt(filaSel, 6).toString(), java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                        java.time.LocalDate.parse(tab_regisMedInv.getValueAt(filaSel, 7).toString(), java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                        tab_regisMedInv.getValueAt(filaSel, 8).toString(),
+                        tab_regisMedInv.getValueAt(filaSel, 9).toString(),
+                        Double.parseDouble(tab_regisMedInv.getValueAt(filaSel, 10).toString())
+                );
+                if (objeto2.mtd_guardar()) {
+                    JOptionPane.showMessageDialog(null, "Registro: " + objeto2.getInMED_idInterno() + " Guardado Exitosamente");
+                    mtd_limpieza();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione una Fila");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al Guardar Datos: " + e.getMessage());
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

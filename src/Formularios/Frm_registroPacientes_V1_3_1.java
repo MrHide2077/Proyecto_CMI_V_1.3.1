@@ -300,25 +300,25 @@ public class Frm_registroPacientes_V1_3_1 extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     DefaultTableModel modelo;
     java.text.SimpleDateFormat formatoFecha = new java.text.SimpleDateFormat("dd/MM/yyyy");
-    
-    private void mtd_encabezado(){
-        String titulos[]={"ID", "CI/Pasaporte", "Apellidos", "Nombres", "Género", "Fecha de Nacimiento", "Teléfono", "E-Mail", "Observaciones", "Tipo de Paciente"};
-        modelo=new DefaultTableModel(null, titulos);
+
+    private void mtd_encabezado() {
+        String titulos[] = {"ID", "CI/Pasaporte", "Apellidos", "Nombres", "Género", "Fecha de Nacimiento", "Teléfono", "E-Mail", "Observaciones", "Tipo de Paciente"};
+        modelo = new DefaultTableModel(null, titulos);
         tab_registroPacientes.setModel(modelo);
     }
-    
-    private boolean mtd_duplicado(){
-        boolean duplicado=false;
-            for(int i=0; i<tab_registroPacientes.getRowCount(); i++){
-                if(txt_CiPasaporte.getText().equals(tab_registroPacientes.getValueAt(i, 1).toString())){
-                    duplicado=true;
-                    break;
-                }
+
+    private boolean mtd_duplicado() {
+        boolean duplicado = false;
+        for (int i = 0; i < tab_registroPacientes.getRowCount(); i++) {
+            if (txt_CiPasaporte.getText().equals(tab_registroPacientes.getValueAt(i, 1).toString())) {
+                duplicado = true;
+                break;
             }
+        }
         return duplicado;
     }
-    
-    private void mtd_limpieza(){
+
+    private void mtd_limpieza() {
         txt_CiPasaporte.setText("");
         txt_apellidos.setText("");
         txt_nombre.setText("");
@@ -329,7 +329,7 @@ public class Frm_registroPacientes_V1_3_1 extends javax.swing.JInternalFrame {
         txt_observaciones.setText("");
         txt_tipoPaciente.setSelectedIndex(0);
     }
-    
+
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombreActionPerformed
@@ -369,48 +369,55 @@ public class Frm_registroPacientes_V1_3_1 extends javax.swing.JInternalFrame {
         try {
             if (txt_CiPasaporte.getText().trim().isEmpty()) {
                 txt_CiPasaporte.requestFocus();
-                throw new IllegalArgumentException("Ingrese el CI/Pasaporte del Paciente");}
+                throw new IllegalArgumentException("Ingrese el CI/Pasaporte del Paciente");
+            }
             if (txt_apellidos.getText().trim().isEmpty()) {
                 txt_apellidos.requestFocus();
-                throw new IllegalArgumentException("Ingrese los Apellidos del Paciente");}
+                throw new IllegalArgumentException("Ingrese los Apellidos del Paciente");
+            }
             if (txt_nombre.getText().trim().isEmpty()) {
                 txt_nombre.requestFocus();
-                throw new IllegalArgumentException("Ingrese los Nombres del Paciente");}
+                throw new IllegalArgumentException("Ingrese los Nombres del Paciente");
+            }
             if (txt_genero.getSelectedIndex() == 0) {
                 txt_genero.requestFocus();
-                throw new IllegalArgumentException("Ingrese el Género del Paciente");}
+                throw new IllegalArgumentException("Ingrese el Género del Paciente");
+            }
             if (txt_fechaNacimiento.getDate() == null) {
                 txt_fechaNacimiento.requestFocus();
-                throw new IllegalArgumentException("Ingrese la Fecha de Nacimiento del Paciente");}
+                throw new IllegalArgumentException("Ingrese la Fecha de Nacimiento del Paciente");
+            }
             if (txt_telefono.getText().trim().isEmpty()) {
                 txt_telefono.requestFocus();
-                throw new IllegalArgumentException("Ingrese el Número de Contacto del Paciente");}
+                throw new IllegalArgumentException("Ingrese el Número de Contacto del Paciente");
+            }
             if (txt_tipoPaciente.getSelectedIndex() == 0) {
                 txt_tipoPaciente.requestFocus();
-                throw new IllegalArgumentException("Ingrese el Tipo de Paciente");}
+                throw new IllegalArgumentException("Ingrese el Tipo de Paciente");
+            }
 
             if (selecFila != -1) {
-                    String idExistente = tab_registroPacientes.getValueAt(selecFila, 0).toString();
+                String idExistente = tab_registroPacientes.getValueAt(selecFila, 0).toString();
 
-                    tab_registroPacientes.setValueAt(idExistente, selecFila, 0);
-                    tab_registroPacientes.setValueAt(txt_CiPasaporte.getText(), selecFila, 1);
-                    tab_registroPacientes.setValueAt(txt_apellidos.getText(), selecFila, 2);
-                    tab_registroPacientes.setValueAt(txt_nombre.getText(), selecFila, 3);
-                    tab_registroPacientes.setValueAt(txt_genero.getSelectedItem().toString(), selecFila, 4);
-                    tab_registroPacientes.setValueAt(formatoFecha.format(txt_fechaNacimiento.getDate()), selecFila, 5);
-                    tab_registroPacientes.setValueAt(txt_telefono.getText(), selecFila, 6);
-                    tab_registroPacientes.setValueAt(txt_correo.getText(), selecFila, 7);
-                    tab_registroPacientes.setValueAt(txt_observaciones.getText(), selecFila, 8);
-                    tab_registroPacientes.setValueAt(txt_tipoPaciente.getSelectedItem().toString(), selecFila, 9);
-                    JOptionPane.showMessageDialog(null, "Registro Actualizado Correctamente");
-                    mtd_limpieza();
+                tab_registroPacientes.setValueAt(idExistente, selecFila, 0);
+                tab_registroPacientes.setValueAt(txt_CiPasaporte.getText(), selecFila, 1);
+                tab_registroPacientes.setValueAt(txt_apellidos.getText(), selecFila, 2);
+                tab_registroPacientes.setValueAt(txt_nombre.getText(), selecFila, 3);
+                tab_registroPacientes.setValueAt(txt_genero.getSelectedItem().toString(), selecFila, 4);
+                tab_registroPacientes.setValueAt(formatoFecha.format(txt_fechaNacimiento.getDate()), selecFila, 5);
+                tab_registroPacientes.setValueAt(txt_telefono.getText(), selecFila, 6);
+                tab_registroPacientes.setValueAt(txt_correo.getText(), selecFila, 7);
+                tab_registroPacientes.setValueAt(txt_observaciones.getText(), selecFila, 8);
+                tab_registroPacientes.setValueAt(txt_tipoPaciente.getSelectedItem().toString(), selecFila, 9);
+                JOptionPane.showMessageDialog(null, "Registro Actualizado Correctamente");
+                mtd_limpieza();
             } else {
                 if (mtd_duplicado() == false) {
                     Clases.Cls_registroPacientesV_3_1 objeto = new Clases.Cls_registroPacientesV_3_1(txt_CiPasaporte.getText().trim(), txt_apellidos.getText().trim(), txt_nombre.getText().trim(), txt_genero.getSelectedItem().toString(), formatoFecha.format(txt_fechaNacimiento.getDate()), txt_telefono.getText().trim(), txt_correo.getText().trim(), txt_observaciones.getText().trim(), txt_tipoPaciente.getSelectedItem().toString());
                     modelo = (DefaultTableModel) tab_registroPacientes.getModel();
                     String nuevaFila[] = {objeto.getPcs_idInterno(), objeto.getPcs_CiPasaporte(), objeto.getPcs_apellidos(), objeto.getPcs_nombres(), objeto.getPcs_genero(), objeto.getPcs_fechaNacimiento(), objeto.getPcs_telefono(), objeto.getPcs_correo(), objeto.getPcs_observa(), objeto.getPcs_tipoPaciente()};
                     modelo.addRow(nuevaFila);
-                    JOptionPane.showMessageDialog(null, "Registro :"+objeto.getPcs_idInterno()+" Cargado Correctamente");
+                    JOptionPane.showMessageDialog(null, "Registro :" + objeto.getPcs_idInterno() + " Cargado Correctamente");
                     JOptionPane.showMessageDialog(null, "Verifique los Datos antes de Guardarlos");
                     mtd_limpieza();
                 }
@@ -424,33 +431,33 @@ public class Frm_registroPacientes_V1_3_1 extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int filaSel=tab_registroPacientes.getSelectedRow();
-            try{
-                if(filaSel!= -1){
-                    txt_CiPasaporte.setText(tab_registroPacientes.getValueAt(filaSel, 1).toString());
-                    txt_apellidos.setText(tab_registroPacientes.getValueAt(filaSel, 2).toString());
-                    txt_nombre.setText(tab_registroPacientes.getValueAt(filaSel, 3).toString());
-                    txt_genero.setSelectedItem(tab_registroPacientes.getValueAt(filaSel, 4));
-                    txt_fechaNacimiento.setDate(formatoFecha.parse(tab_registroPacientes.getValueAt(filaSel, 5).toString()));
-                    txt_telefono.setText(tab_registroPacientes.getValueAt(filaSel, 6).toString());
-                    txt_correo.setText(tab_registroPacientes.getValueAt(filaSel, 7).toString());
-                    txt_observaciones.setText(tab_registroPacientes.getValueAt(filaSel, 8).toString());
-                    txt_tipoPaciente.setSelectedItem(tab_registroPacientes.getValueAt(filaSel, 9));
-                }else{
-                    JOptionPane.showMessageDialog(null, "Seleccione una Fila");
-                }
-            }catch(java.text.ParseException e){
-                JOptionPane.showMessageDialog(null, "Error en el Foprmate de Fecha dd/mm/yyyy");
-            }catch(IllegalArgumentException e){
-                JOptionPane.showMessageDialog(null, "Error Desconocido :"+e.getMessage());
+        int filaSel = tab_registroPacientes.getSelectedRow();
+        try {
+            if (filaSel != -1) {
+                txt_CiPasaporte.setText(tab_registroPacientes.getValueAt(filaSel, 1).toString());
+                txt_apellidos.setText(tab_registroPacientes.getValueAt(filaSel, 2).toString());
+                txt_nombre.setText(tab_registroPacientes.getValueAt(filaSel, 3).toString());
+                txt_genero.setSelectedItem(tab_registroPacientes.getValueAt(filaSel, 4));
+                txt_fechaNacimiento.setDate(formatoFecha.parse(tab_registroPacientes.getValueAt(filaSel, 5).toString()));
+                txt_telefono.setText(tab_registroPacientes.getValueAt(filaSel, 6).toString());
+                txt_correo.setText(tab_registroPacientes.getValueAt(filaSel, 7).toString());
+                txt_observaciones.setText(tab_registroPacientes.getValueAt(filaSel, 8).toString());
+                txt_tipoPaciente.setSelectedItem(tab_registroPacientes.getValueAt(filaSel, 9));
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione una Fila");
             }
+        } catch (java.text.ParseException e) {
+            JOptionPane.showMessageDialog(null, "Error en el Foprmate de Fecha dd/mm/yyyy");
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, "Error Desconocido :" + e.getMessage());
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         int filaSelec = tab_registroPacientes.getSelectedRow();
         if (filaSelec != -1) {
-            int opcion =JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este registro?");
+            int opcion = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar este registro?");
 
             if (opcion == 0) {
                 modelo = (DefaultTableModel) tab_registroPacientes.getModel();

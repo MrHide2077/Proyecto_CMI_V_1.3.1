@@ -18,13 +18,13 @@ import javax.swing.JOptionPane;
  *
  * @author diego
  */
-public class Cls_registroLaboratorios_V1_3_1 implements int_GBE_CMI_V1_3_1{
+public class Cls_registroLaboratorios_V1_3_1 implements int_GBE_CMI_V1_3_1 {
+
     JFileChooser seleccionado = new JFileChooser();
     File archivo;
     FileWriter escribir;
     PrintWriter linea;
-    
-    
+
     //Datos laboratorios
     private String lb_idInterno;
     private String lb_ruc;
@@ -34,15 +34,15 @@ public class Cls_registroLaboratorios_V1_3_1 implements int_GBE_CMI_V1_3_1{
     private String lb_correo;
     private String lb_sucursal;
 
-    private Random aleatorio=new Random();
-    
+    private Random aleatorio = new Random();
+
     public Cls_registroLaboratorios_V1_3_1() {
     }
 
     public Cls_registroLaboratorios_V1_3_1(String lb_ruc, String lb_nombreComercal, String lb_contactoPrincipal, String lb_numContactoPrinci, String lb_correo, String lb_sucursal) {
-        int idUnico=aleatorio.nextInt(9999)+10000;
-        
-        this.lb_idInterno="lb_"+idUnico;
+        int idUnico = aleatorio.nextInt(9999) + 10000;
+
+        this.lb_idInterno = "lb_" + idUnico;
         this.lb_ruc = lb_ruc;
         this.lb_nombreComercal = lb_nombreComercal;
         this.lb_contactoPrincipal = lb_contactoPrincipal;
@@ -125,8 +125,6 @@ public class Cls_registroLaboratorios_V1_3_1 implements int_GBE_CMI_V1_3_1{
         this.aleatorio = aleatorio;
     }
 
-    
-    
     @Override
     public boolean mtd_guardar() {
         boolean ban = false;
@@ -179,49 +177,50 @@ public class Cls_registroLaboratorios_V1_3_1 implements int_GBE_CMI_V1_3_1{
     }
 
     @Override
-public boolean mtd_buscar() {
-    boolean ban = true;
-    try {
-        if (seleccionado.showDialog(null, "Abrir Archivo .txt") == JFileChooser.APPROVE_OPTION) {
-            archivo = seleccionado.getSelectedFile();
-            FileReader reader = new FileReader(archivo);
-            BufferedReader bufferedReader = new BufferedReader(reader);
-            String line;
+    public boolean mtd_buscar() {
+        boolean ban = true;
+        try {
+            if (seleccionado.showDialog(null, "Abrir Archivo .txt") == JFileChooser.APPROVE_OPTION) {
+                archivo = seleccionado.getSelectedFile();
+                FileReader reader = new FileReader(archivo);
+                BufferedReader bufferedReader = new BufferedReader(reader);
+                String line;
 
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] parts = line.split(":");
-                if (parts.length < 2) continue; // Evita errores si la línea está vacía
+                while ((line = bufferedReader.readLine()) != null) {
+                    String[] parts = line.split(":");
+                    if (parts.length < 2) {
+                        continue; // Evita errores si la línea está vacía
+                    }
+                    // Limpiamos los espacios extras de la etiqueta y del valor
+                    String etiqueta = parts[0].trim();
+                    String valor = parts[1].trim();
 
-                // Limpiamos los espacios extras de la etiqueta y del valor
-                String etiqueta = parts[0].trim();
-                String valor = parts[1].trim();
-
-                if (etiqueta.equals("ID Interno")) {
-                    this.setLb_idInterno(valor);
-                } else if (etiqueta.equals("RUC/Registro Sanitario")) {
-                    this.setLb_ruc(valor);
-                } else if (etiqueta.equals("Nombre Comercial")) {
-                    this.setLb_nombreComercal(valor);
-                } else if (etiqueta.equals("Contacto Principal")) {
-                    this.setLb_contactoPrincipal(valor); // ✨ CORREGIDO: Ya no sobrescribe el nombre comercial
-                } else if (etiqueta.equals("Número de Contacto") || etiqueta.equals("Número de Contacto Prinicipal")) {
-                    this.setLb_numContactoPrinci(valor); // ✨ CORREGIDO: Acepta ambas variaciones por si acaso
-                } else if (etiqueta.equals("E-Mail")) {
-                    this.setLb_correo(valor);
-                } else if (etiqueta.equals("Sucursal")) {
-                    this.setLb_sucursal(valor);
-                } 
+                    if (etiqueta.equals("ID Interno")) {
+                        this.setLb_idInterno(valor);
+                    } else if (etiqueta.equals("RUC/Registro Sanitario")) {
+                        this.setLb_ruc(valor);
+                    } else if (etiqueta.equals("Nombre Comercial")) {
+                        this.setLb_nombreComercal(valor);
+                    } else if (etiqueta.equals("Contacto Principal")) {
+                        this.setLb_contactoPrincipal(valor); // ✨ CORREGIDO: Ya no sobrescribe el nombre comercial
+                    } else if (etiqueta.equals("Número de Contacto") || etiqueta.equals("Número de Contacto Prinicipal")) {
+                        this.setLb_numContactoPrinci(valor); // ✨ CORREGIDO: Acepta ambas variaciones por si acaso
+                    } else if (etiqueta.equals("E-Mail")) {
+                        this.setLb_correo(valor);
+                    } else if (etiqueta.equals("Sucursal")) {
+                        this.setLb_sucursal(valor);
+                    }
+                }
+                reader.close();
+            } else {
+                ban = false;
             }
-            reader.close();
-        } else {
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Error al leer el Archivo");
             ban = false;
         }
-    } catch (IOException ex) {
-        JOptionPane.showMessageDialog(null, "Error al leer el Archivo");
-        ban = false;
+        return ban;
     }
-    return ban;
-}
 
     @Override
     public boolean mtd_eliminar() {

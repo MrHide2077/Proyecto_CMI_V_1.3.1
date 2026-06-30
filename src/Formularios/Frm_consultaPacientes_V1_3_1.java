@@ -317,25 +317,25 @@ public class Frm_consultaPacientes_V1_3_1 extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     DefaultTableModel modelo;
     java.text.SimpleDateFormat formatoFecha = new java.text.SimpleDateFormat("dd/MM/yyyy");
-    
-    private void mtd_encabezado(){
-        String titulos[]={"ID", "CI/Pasaporte", "Apellidos", "Nombres", "Género", "Fecha de Nacimiento", "Teléfono", "E-Mail", "Observaciones", "Tipo de Paciente"};
-        modelo=new DefaultTableModel(null, titulos);
+
+    private void mtd_encabezado() {
+        String titulos[] = {"ID", "CI/Pasaporte", "Apellidos", "Nombres", "Género", "Fecha de Nacimiento", "Teléfono", "E-Mail", "Observaciones", "Tipo de Paciente"};
+        modelo = new DefaultTableModel(null, titulos);
         tab_consultaPacientes.setModel(modelo);
     }
 
-    private boolean mtd_duplicado(){
-        boolean duplicado=false;
-            for(int i=0; i<tab_consultaPacientes.getRowCount(); i++){
-                if(txt_CiPasaporte.getText().equals(tab_consultaPacientes.getValueAt(i, 1).toString())){
-                    duplicado=true;
-                    break;
-                }
+    private boolean mtd_duplicado() {
+        boolean duplicado = false;
+        for (int i = 0; i < tab_consultaPacientes.getRowCount(); i++) {
+            if (txt_CiPasaporte.getText().equals(tab_consultaPacientes.getValueAt(i, 1).toString())) {
+                duplicado = true;
+                break;
             }
+        }
         return duplicado;
     }
-    
-    private void mtd_limpieza(){
+
+    private void mtd_limpieza() {
         txt_idInterno.setText("");
         txt_CiPasaporte.setText("");
         txt_apellidos.setText("");
@@ -347,16 +347,16 @@ public class Frm_consultaPacientes_V1_3_1 extends javax.swing.JInternalFrame {
         txt_observa.setText("");
         txt_tipoPaciente.setSelectedIndex(0);
     }
-    
+
     private void mtd_cargarTabla() {
-    Clases.Cls_consultaPacientes.mtd_cargarDatosA_Modelo((DefaultTableModel) tab_consultaPacientes.getModel());
+        Clases.Cls_consultaPacientes.mtd_cargarDatosA_Modelo((DefaultTableModel) tab_consultaPacientes.getModel());
     }
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int filaSel=tab_consultaPacientes.getSelectedRow();
-        try{
-            if(filaSel!= -1){
+        int filaSel = tab_consultaPacientes.getSelectedRow();
+        try {
+            if (filaSel != -1) {
                 txt_idInterno.setText(tab_consultaPacientes.getValueAt(filaSel, 0).toString());
                 txt_CiPasaporte.setText(tab_consultaPacientes.getValueAt(filaSel, 1).toString());
                 txt_apellidos.setText(tab_consultaPacientes.getValueAt(filaSel, 2).toString());
@@ -367,13 +367,13 @@ public class Frm_consultaPacientes_V1_3_1 extends javax.swing.JInternalFrame {
                 txt_correo.setText(tab_consultaPacientes.getValueAt(filaSel, 7).toString());
                 txt_observa.setText(tab_consultaPacientes.getValueAt(filaSel, 8).toString());
                 txt_tipoPaciente.setSelectedItem(tab_consultaPacientes.getValueAt(filaSel, 9).toString().trim());
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Seleccione una fila");
             }
-        }catch(java.text.ParseException e){
+        } catch (java.text.ParseException e) {
             JOptionPane.showMessageDialog(null, "Error en el Formato de Fecha dd/mm/yyyy");
-        }catch(IllegalArgumentException e){
-            JOptionPane.showMessageDialog(null, "Error Inesperado :"+e.getMessage());
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, "Error Inesperado :" + e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -404,7 +404,7 @@ public class Frm_consultaPacientes_V1_3_1 extends javax.swing.JInternalFrame {
 
         if (objeto.mtd_buscar()) {
             modelo = (DefaultTableModel) tab_consultaPacientes.getModel();
-            String nuevaFila[]={objeto.getPcs_idInterno(),objeto.getPcs_CiPasaporte(), objeto.getPcs_apellidos(), objeto.getPcs_nombres(), objeto.getPcs_genero(), objeto.getPcs_fechaNacimiento(), objeto.getPcs_telefono(), objeto.getPcs_correo(), objeto.getPcs_observa(), objeto.getPcs_tipoPaciente()};
+            String nuevaFila[] = {objeto.getPcs_idInterno(), objeto.getPcs_CiPasaporte(), objeto.getPcs_apellidos(), objeto.getPcs_nombres(), objeto.getPcs_genero(), objeto.getPcs_fechaNacimiento(), objeto.getPcs_telefono(), objeto.getPcs_correo(), objeto.getPcs_observa(), objeto.getPcs_tipoPaciente()};
             modelo.addRow(nuevaFila);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -445,8 +445,7 @@ public class Frm_consultaPacientes_V1_3_1 extends javax.swing.JInternalFrame {
             if (selecFila != -1) {
 
                 String idExistente = tab_consultaPacientes.getValueAt(selecFila, 0).toString();
-                Clases.Cls_registroPacientesV_3_1 objetoAct = new Clases.Cls_registroPacientesV_3_1(idExistente,txt_CiPasaporte.getText().trim(), txt_apellidos.getText().trim(), txt_nombres.getText().trim(), txt_genero.getSelectedItem().toString(), formatoFecha.format(txt_fechaNacimiento.getDate()), txt_telefono.getText().trim(), txt_correo.getText().trim(), txt_observa.getText().trim(), txt_tipoPaciente.getSelectedItem().toString());
-
+                Clases.Cls_registroPacientesV_3_1 objetoAct = new Clases.Cls_registroPacientesV_3_1(idExistente, txt_CiPasaporte.getText().trim(), txt_apellidos.getText().trim(), txt_nombres.getText().trim(), txt_genero.getSelectedItem().toString(), formatoFecha.format(txt_fechaNacimiento.getDate()), txt_telefono.getText().trim(), txt_correo.getText().trim(), txt_observa.getText().trim(), txt_tipoPaciente.getSelectedItem().toString());
 
                 tab_consultaPacientes.setValueAt(idExistente, selecFila, 0);
                 tab_consultaPacientes.setValueAt(txt_CiPasaporte.getText(), selecFila, 1);
@@ -458,10 +457,10 @@ public class Frm_consultaPacientes_V1_3_1 extends javax.swing.JInternalFrame {
                 tab_consultaPacientes.setValueAt(txt_correo.getText(), selecFila, 7);
                 tab_consultaPacientes.setValueAt(txt_observa.getText(), selecFila, 8);
                 tab_consultaPacientes.setValueAt(txt_tipoPaciente.getSelectedItem().toString(), selecFila, 9);
-                
+
                 if (objetoAct.mtd_guardar()) {
-                JOptionPane.showMessageDialog(null, "Registro Actualizado Correctamente");
-                mtd_limpieza();
+                    JOptionPane.showMessageDialog(null, "Registro Actualizado Correctamente");
+                    mtd_limpieza();
                 }
                 JOptionPane.showMessageDialog(null, "Registro Actualizado Correctamente");
                 mtd_limpieza();
@@ -480,9 +479,8 @@ public class Frm_consultaPacientes_V1_3_1 extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error inesperado :" + e.getMessage());
         }
     }//GEN-LAST:event_jButton4ActionPerformed
-    
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

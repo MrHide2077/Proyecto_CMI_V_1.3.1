@@ -221,14 +221,14 @@ public class Frm_registroLabs_V1_3_1 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     DefaultTableModel modelo;
-    
-    public void mtd_encabezado(){
-        String titulos[]={"ID", "RUC/Registro Sanitario", "Nombre Comercial","Contacto Principal", "Número", "E-Mail", "Sucursal"};
-        modelo=new DefaultTableModel(null, titulos);
+
+    public void mtd_encabezado() {
+        String titulos[] = {"ID", "RUC/Registro Sanitario", "Nombre Comercial", "Contacto Principal", "Número", "E-Mail", "Sucursal"};
+        modelo = new DefaultTableModel(null, titulos);
         tab_registroLabs.setModel(modelo);
     }
-    
-    public void mtd_limpieza(){
+
+    public void mtd_limpieza() {
         txt_ruc.setText("");
         txt_nombComer.setText("");
         txt_contactoPrinc.setText("");
@@ -236,16 +236,18 @@ public class Frm_registroLabs_V1_3_1 extends javax.swing.JInternalFrame {
         txt_correoLab.setText("");
         txt_dirLab.setText("");
     }
-    
+
     public boolean mtd_duplicado() {
         boolean duplicado = false;
         for (int i = 0; i < tab_registroLabs.getRowCount(); i++) {
             if (txt_ruc.getText().equals(tab_registroLabs.getValueAt(i, 1).toString())) {
                 duplicado = true;
                 break;
+            }
         }
-    }return duplicado;}
-    
+        return duplicado;
+    }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int filaSel = tab_registroLabs.getSelectedRow();
@@ -275,7 +277,7 @@ public class Frm_registroLabs_V1_3_1 extends javax.swing.JInternalFrame {
                 throw new IllegalArgumentException("Ingrese la Dirección de la Sucursal");
             }
             if (filaSel != -1) {
-                String idInterno=tab_registroLabs.getValueAt(filaSel, 0).toString();
+                String idInterno = tab_registroLabs.getValueAt(filaSel, 0).toString();
                 tab_registroLabs.setValueAt(idInterno, filaSel, 0);
                 tab_registroLabs.setValueAt(txt_ruc.getText(), filaSel, 1);
                 tab_registroLabs.setValueAt(txt_nombComer.getText(), filaSel, 2);
@@ -366,9 +368,8 @@ public class Frm_registroLabs_V1_3_1 extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Error al Guardar Datos: " + e.getMessage());
         }
     }//GEN-LAST:event_jButton4ActionPerformed
-    
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

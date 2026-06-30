@@ -231,19 +231,19 @@ public class Frm_consultaLabs_V1_3_1 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     DefaultTableModel modelo;
-    Clases.Cls_registroLaboratorios_V1_3_1 objeto1=new Clases.Cls_registroLaboratorios_V1_3_1();
-    
+    Clases.Cls_registroLaboratorios_V1_3_1 objeto1 = new Clases.Cls_registroLaboratorios_V1_3_1();
+
     private void mtd_cargarTabla() {
-    Clases.Cls_consultaLabs_V1_3_1.mtd_cargarDatosA_Modelo((DefaultTableModel) tab_consulLabs.getModel());
+        Clases.Cls_consultaLabs_V1_3_1.mtd_cargarDatosA_Modelo((DefaultTableModel) tab_consulLabs.getModel());
     }
-    
-    public void mtd_encabezado(){
-        String titulos[]={"ID", "RUC/Registro Sanitario", "Nombre Comercial", "Contacto Principal", "Número de Contacto", "E-Mail", "Sucursal"};
-        modelo=new DefaultTableModel(null, titulos);
+
+    public void mtd_encabezado() {
+        String titulos[] = {"ID", "RUC/Registro Sanitario", "Nombre Comercial", "Contacto Principal", "Número de Contacto", "E-Mail", "Sucursal"};
+        modelo = new DefaultTableModel(null, titulos);
         tab_consulLabs.setModel(modelo);
     }
-    
-    public void mtd_limpieza(){
+
+    public void mtd_limpieza() {
         txt_idInterno.setText("");
         txt_ruc.setText("");
         txt_nombComer.setText("");
@@ -252,7 +252,7 @@ public class Frm_consultaLabs_V1_3_1 extends javax.swing.JInternalFrame {
         txt_correo.setText("");
         txt_sucursal.setText("");
     }
-    
+
     public boolean mtd_duplicado() {
         boolean duplicado = false;
         for (int i = 0; i < tab_consulLabs.getRowCount(); i++) {
@@ -263,70 +263,70 @@ public class Frm_consultaLabs_V1_3_1 extends javax.swing.JInternalFrame {
         }
         return duplicado;
     }
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int filaSel=tab_consulLabs.getSelectedRow();
-        try{
-            if(txt_ruc.getText().trim().isEmpty()){
-               txt_ruc.requestFocus();
-               throw new IllegalArgumentException("Ingrese el RUC/Registro Sanitario");
+        int filaSel = tab_consulLabs.getSelectedRow();
+        try {
+            if (txt_ruc.getText().trim().isEmpty()) {
+                txt_ruc.requestFocus();
+                throw new IllegalArgumentException("Ingrese el RUC/Registro Sanitario");
             }
-            if(txt_nombComer.getText().trim().isEmpty()){
+            if (txt_nombComer.getText().trim().isEmpty()) {
                 txt_nombComer.requestFocus();
                 throw new IllegalArgumentException("Ingrese el Nombre Comercial");
             }
-            if(txt_contactoPrinc.getText().trim().isEmpty()){
+            if (txt_contactoPrinc.getText().trim().isEmpty()) {
                 txt_contactoPrinc.requestFocus();
                 throw new IllegalArgumentException("Ingrese el Nombre del Contacto Principal");
             }
-            if(txt_numContact.getText().trim().isEmpty()){
-               txt_numContact.requestFocus();
-               throw new IllegalArgumentException("Ingrese el Número del Contacto Principal");
+            if (txt_numContact.getText().trim().isEmpty()) {
+                txt_numContact.requestFocus();
+                throw new IllegalArgumentException("Ingrese el Número del Contacto Principal");
             }
-            if(txt_correo.getText().trim().isEmpty()){
-               txt_correo.requestFocus();
-               throw new IllegalArgumentException("Ingrese el Correo Electronico");
+            if (txt_correo.getText().trim().isEmpty()) {
+                txt_correo.requestFocus();
+                throw new IllegalArgumentException("Ingrese el Correo Electronico");
             }
-            if(txt_sucursal.getText().trim().isEmpty()){
-               txt_sucursal.requestFocus();
-               throw new IllegalArgumentException("Ingrese la Dirección de la Sucursal");
+            if (txt_sucursal.getText().trim().isEmpty()) {
+                txt_sucursal.requestFocus();
+                throw new IllegalArgumentException("Ingrese la Dirección de la Sucursal");
             }
-            
-            if(filaSel!= -1){
-                String idInterno=tab_consulLabs.getValueAt(filaSel, 0).toString();
-                
-                Clases.Cls_registroLaboratorios_V1_3_1 objetoActualizar = new Clases.Cls_registroLaboratorios_V1_3_1(idInterno,txt_ruc.getText(),txt_nombComer.getText(),txt_contactoPrinc.getText(),txt_numContact.getText(),txt_correo.getText(),txt_sucursal.getText());
+
+            if (filaSel != -1) {
+                String idInterno = tab_consulLabs.getValueAt(filaSel, 0).toString();
+
+                Clases.Cls_registroLaboratorios_V1_3_1 objetoActualizar = new Clases.Cls_registroLaboratorios_V1_3_1(idInterno, txt_ruc.getText(), txt_nombComer.getText(), txt_contactoPrinc.getText(), txt_numContact.getText(), txt_correo.getText(), txt_sucursal.getText());
                 tab_consulLabs.setValueAt(txt_ruc.getText(), filaSel, 1);
                 tab_consulLabs.setValueAt(txt_nombComer.getText(), filaSel, 2);
                 tab_consulLabs.setValueAt(txt_contactoPrinc.getText(), filaSel, 3);
                 tab_consulLabs.setValueAt(txt_numContact.getText(), filaSel, 4);
                 tab_consulLabs.setValueAt(txt_correo.getText(), filaSel, 5);
                 tab_consulLabs.setValueAt(txt_sucursal.getText(), filaSel, 6);
-                
+
                 if (objetoActualizar.mtd_guardar()) {
-                JOptionPane.showMessageDialog(null, "Registro Actualizado Correctamente");
-                mtd_limpieza();
+                    JOptionPane.showMessageDialog(null, "Registro Actualizado Correctamente");
+                    mtd_limpieza();
                 }
-            }else{
-                Clases.Cls_registroLaboratorios_V1_3_1 objeto=new Clases.Cls_registroLaboratorios_V1_3_1(txt_ruc.getText(), txt_nombComer.getText(), txt_contactoPrinc.getText(), txt_numContact.getText(), txt_correo.getText(), txt_sucursal.getText());
-                modelo=(DefaultTableModel)tab_consulLabs.getModel();
-                String nuevaFila[]={objeto.getLb_idInterno(), objeto.getLb_ruc(), objeto.getLb_nombreComercal(), objeto.getLb_contactoPrincipal(), objeto.getLb_numContactoPrinci(), objeto.getLb_correo(), objeto.getLb_sucursal()};
+            } else {
+                Clases.Cls_registroLaboratorios_V1_3_1 objeto = new Clases.Cls_registroLaboratorios_V1_3_1(txt_ruc.getText(), txt_nombComer.getText(), txt_contactoPrinc.getText(), txt_numContact.getText(), txt_correo.getText(), txt_sucursal.getText());
+                modelo = (DefaultTableModel) tab_consulLabs.getModel();
+                String nuevaFila[] = {objeto.getLb_idInterno(), objeto.getLb_ruc(), objeto.getLb_nombreComercal(), objeto.getLb_contactoPrincipal(), objeto.getLb_numContactoPrinci(), objeto.getLb_correo(), objeto.getLb_sucursal()};
                 modelo.addRow(nuevaFila);
                 JOptionPane.showMessageDialog(null, "Registro : " + objeto.getLb_idInterno() + " Cargado Correctamente");
                 JOptionPane.showMessageDialog(null, "Verifique los Datos antes de Guardarlos");
                 mtd_limpieza();
             }
-        }catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(null, "Error : Campos Incompletos");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int filaSel=tab_consulLabs.getSelectedRow();
-        try{
-            if(filaSel!= -1){
+        int filaSel = tab_consulLabs.getSelectedRow();
+        try {
+            if (filaSel != -1) {
                 txt_idInterno.setText(tab_consulLabs.getValueAt(filaSel, 0).toString());
                 txt_ruc.setText(tab_consulLabs.getValueAt(filaSel, 2).toString());
                 txt_nombComer.setText(tab_consulLabs.getValueAt(filaSel, 3).toString());
@@ -334,11 +334,11 @@ public class Frm_consultaLabs_V1_3_1 extends javax.swing.JInternalFrame {
                 txt_numContact.setText(tab_consulLabs.getValueAt(filaSel, 4).toString());
                 txt_correo.setText(tab_consulLabs.getValueAt(filaSel, 5).toString());
                 txt_sucursal.setText(tab_consulLabs.getValueAt(filaSel, 6).toString());
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Seleccione una Fila");
             }
-        }catch(IllegalArgumentException e){
-            JOptionPane.showMessageDialog(null, "Error Desconocido :"+e.getMessage());
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, "Error Desconocido :" + e.getMessage());
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

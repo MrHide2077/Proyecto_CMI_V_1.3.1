@@ -18,12 +18,13 @@ import javax.swing.JOptionPane;
  *
  * @author diego
  */
-public class Cls_registroPacientesV_3_1 implements int_GBE_CMI_V1_3_1{
+public class Cls_registroPacientesV_3_1 implements int_GBE_CMI_V1_3_1 {
+
     JFileChooser seleccionado = new JFileChooser();
     File archivo;
     FileWriter escribir;
     PrintWriter linea;
-    
+
     private String pcs_idInterno;
     private String pcs_CiPasaporte;
     private String pcs_apellidos;
@@ -34,15 +35,15 @@ public class Cls_registroPacientesV_3_1 implements int_GBE_CMI_V1_3_1{
     private String pcs_correo;
     private String pcs_observa;
     private String pcs_tipoPaciente;
-    private Random aleatorio=new Random();
+    private Random aleatorio = new Random();
 
     public Cls_registroPacientesV_3_1() {
     }
 
     public Cls_registroPacientesV_3_1(String pcs_CiPasaporte, String pcs_apellidos, String pcs_nombres, String pcs_genero, String pcs_fechaNacimiento, String pcs_telefono, String pcs_correo, String pcs_observa, String pcs_tipoPaciente) {
-        int idUnico=aleatorio.nextInt(9999)+10000;
-        
-        this.pcs_idInterno = "Pcs_"+idUnico;
+        int idUnico = aleatorio.nextInt(9999) + 10000;
+
+        this.pcs_idInterno = "Pcs_" + idUnico;
         this.pcs_CiPasaporte = pcs_CiPasaporte;
         this.pcs_apellidos = pcs_apellidos;
         this.pcs_nombres = pcs_nombres;
@@ -111,9 +112,8 @@ public class Cls_registroPacientesV_3_1 implements int_GBE_CMI_V1_3_1{
     public String getPcs_tipoPaciente() {
         return pcs_tipoPaciente;
     }
-    
-    //Setters
 
+    //Setters
     public void setPcs_idInterno(String pcs_idInterno) {
         this.pcs_idInterno = pcs_idInterno;
     }
@@ -255,7 +255,6 @@ public class Cls_registroPacientesV_3_1 implements int_GBE_CMI_V1_3_1{
         return ban;
     }
 
-    
     @Override
     public boolean mtd_eliminar() {
         boolean ban = false;
