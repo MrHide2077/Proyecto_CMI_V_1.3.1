@@ -6,18 +6,19 @@ package Formularios;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author diego
  */
-public class Frm_registroMEDInventarios extends javax.swing.JInternalFrame {
+public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Frm_registroMEDInventarios
      */
-    public Frm_registroMEDInventarios() {
+    public Frm_registroMEDInventarios_V_1_3_1() {
         initComponents();
         mtd_encabezado();
     }
@@ -262,6 +263,7 @@ public class Frm_registroMEDInventarios extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     DefaultTableModel modelo;
     Clases.Cls_registroInMED objeto=new Clases.Cls_registroInMED();
+    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
     
     public void mtd_limpieza(){
         txt_nombComer.setText("");
@@ -340,7 +342,7 @@ public class Frm_registroMEDInventarios extends javax.swing.JInternalFrame {
                throw new IllegalArgumentException("Ingrese la cantidad");
             }
             if(filaSel!= -1){
-                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                
 
                 tab_regisMedInv.setValueAt(txt_nombComer.getText(), filaSel, 1);
                 tab_regisMedInv.setValueAt(txt_princAct.getText(), filaSel, 2);
@@ -352,11 +354,59 @@ public class Frm_registroMEDInventarios extends javax.swing.JInternalFrame {
                 tab_regisMedInv.setValueAt(txt_loteInt.getSelectedItem(), filaSel, 8);
                 tab_regisMedInv.setValueAt(txt_loteFab.getText(), filaSel, 9);
                 tab_regisMedInv.setValueAt(String.valueOf(txt_cantidad.getText()), filaSel, 10);
-            }else{
                 
+                mtd_limpieza();
+            }else{
+                java.time.LocalDate localFechaIngreso = null;
+                java.time.LocalDate localFechaVence = null;
+
+                if (txt_fechaIngreso.getDate() != null) {
+                    localFechaIngreso = txt_fechaIngreso.getDate().toInstant()
+                            .atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+                }
+                if (txt_fechaVence.getDate() != null) {
+                    localFechaVence = txt_fechaVence.getDate().toInstant()
+                            .atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+                }
+                Double cantDouble = 0.0;
+                try {
+                    cantDouble = Double.parseDouble(txt_cantidad.getText().trim());
+                } catch (NumberFormatException e) {
+                }
+
+                Clases.Cls_registroInMED objeto1 = new Clases.Cls_registroInMED(
+                        txt_nombComer.getText(),
+                        txt_princAct.getText(),
+                        txt_lab.getText(),
+                        txt_present.getSelectedItem().toString(),
+                        txt_unitDosis.getText(),
+                        localFechaIngreso,
+                        localFechaVence,
+                        txt_loteInt.getSelectedItem().toString(),
+                        txt_loteFab.getText(),
+                        cantDouble
+                );                
+                modelo=(DefaultTableModel)tab_regisMedInv.getModel();
+                Object nuevaFila[] = {
+                    objeto1.getInMED_idInterno(),
+                    objeto1.getInMED_nombComer(),
+                    objeto1.getInMED_prinAct(),
+                    objeto1.getInMED_lab(),
+                    objeto1.getInMED_present(),
+                    objeto1.getInMED_unitDosis(),
+                    sdf.format(txt_fechaIngreso.getDate()),
+                    sdf.format(txt_fechaVence.getDate()),
+                    objeto1.getInMed_loteInt(),
+                    objeto1.getInMed_loteFab(),
+                    objeto1.getInMed_cant()
+                };
+                modelo.addRow(nuevaFila);
+                JOptionPane.showMessageDialog(null, "Registro: " + objeto1.getInMED_idInterno() + " Cargado Correctamente");
+                JOptionPane.showMessageDialog(null, "Verifique los Datos antes de Guardarlos");
+                mtd_limpieza();
             }
-        }catch(IllegalArgumentException e){
-            
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error de Validación", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

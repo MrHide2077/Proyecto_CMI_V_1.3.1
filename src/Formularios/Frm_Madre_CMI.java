@@ -119,7 +119,7 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-        Formularios.Frm_registroMEDInventarios objeto2=new Formularios.Frm_registroMEDInventarios();
+        Formularios.Frm_registroMEDInventarios_V_1_3_1 objeto2=new Formularios.Frm_registroMEDInventarios_V_1_3_1();
         desktopPane.add(objeto2);
         objeto2.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed

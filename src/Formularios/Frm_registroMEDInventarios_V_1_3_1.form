@@ -65,20 +65,18 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="txt_loteFab" alignment="0" pref="130" max="32767" attributes="0"/>
                                   <Component id="txt_cantidad" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="txt_loteInt" alignment="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="txt_fechaVence" alignment="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="txt_fechaIngreso" alignment="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="txt_unitDosis" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txt_present" alignment="0" pref="0" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txt_lab" min="-2" pref="90" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btn_Blab" pref="34" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Component id="txt_princAct" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txt_nombComer" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txt_loteInt" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="txt_fechaVence" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="txt_fechaIngreso" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="txt_unitDosis" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txt_present" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="txt_lab" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btn_Blab" pref="34" max="32767" attributes="0"/>
                                   </Group>
+                                  <Component id="txt_princAct" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txt_nombComer" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
