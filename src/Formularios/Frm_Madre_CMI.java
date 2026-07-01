@@ -36,6 +36,8 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,6 +75,14 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
         jMenu2.add(jMenuItem6);
 
         menuBar.add(jMenu2);
+
+        jMenu3.setText("Facturación");
+
+        jMenuItem7.setText("Emitir Factura");
+        jMenuItem7.addActionListener(this::jMenuItem7ActionPerformed);
+        jMenu3.add(jMenuItem7);
+
+        menuBar.add(jMenu3);
 
         setJMenuBar(menuBar);
 
@@ -136,6 +146,13 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
         objeto2_1.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        Formularios.Frm_emitirFactura_CMI_V_1_3_1 objeto3=new Formularios.Frm_emitirFactura_CMI_V_1_3_1();
+        desktopPane.add(objeto3);
+        objeto3.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -175,12 +192,14 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
 
