@@ -35,6 +35,7 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,6 +67,10 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
         jMenuItem5.setText("Registro de Medicinas");
         jMenuItem5.addActionListener(this::jMenuItem5ActionPerformed);
         jMenu2.add(jMenuItem5);
+
+        jMenuItem6.setText("Stock de Medicamentos");
+        jMenuItem6.addActionListener(this::jMenuItem6ActionPerformed);
+        jMenu2.add(jMenuItem6);
 
         menuBar.add(jMenu2);
 
@@ -124,6 +129,13 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
         objeto2.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        Formularios.Frm_consultaMEDinventarios objeto2_1=new Formularios.Frm_consultaMEDinventarios();
+        desktopPane.add(objeto2_1);
+        objeto2_1.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -168,6 +180,7 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
 

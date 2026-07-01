@@ -228,7 +228,7 @@ public class Cls_registroInMED_V_1_3_1 implements int_GBE_CMI_V1_3_1 {
                 String line;
 
                 while ((line = bufferedReader.readLine()) != null) {
-                    String[] parts = line.split(":");
+                    String[] parts = line.split(":", 2);
                     if (parts.length < 2) {
                         continue;
                     }
@@ -242,11 +242,11 @@ public class Cls_registroInMED_V_1_3_1 implements int_GBE_CMI_V1_3_1 {
                         this.setInMED_nombComer(valor);
                     } else if (etiqueta.equals("Principio Activo")) {
                         this.setInMED_prinAct(valor);
-                    } else if (etiqueta.equals("Unidades/Dosis")) {
+                    } else if (etiqueta.equals("Laboratorio")) { 
                         this.setInMED_lab(valor);
                     } else if (etiqueta.equals("Presentación")) {
                         this.setInMED_present(valor);
-                    } else if (etiqueta.equals("Unidades/Dosis")) {
+                    } else if (etiqueta.equals("Unidades/Dosis")) { 
                         this.setInMED_unitDosis(valor);
                     } else if (etiqueta.equals("Fecha de Ingreso")) {
                         this.setInMED_fechaIngreso(java.time.LocalDate.parse(valor));

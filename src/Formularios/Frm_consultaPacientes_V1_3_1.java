@@ -349,7 +349,7 @@ public class Frm_consultaPacientes_V1_3_1 extends javax.swing.JInternalFrame {
     }
 
     private void mtd_cargarTabla() {
-        Clases.Cls_consultaPacientes.mtd_cargarDatosA_Modelo((DefaultTableModel) tab_consultaPacientes.getModel());
+        Clases.Cls_consultaPacientes_V_1_3_1.mtd_cargarDatosA_Modelo((DefaultTableModel) tab_consultaPacientes.getModel());
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -13,7 +13,7 @@ import java.io.FileReader;
  *
  * @author diego
  */
-public class Cls_consultaPacientes {
+public class Cls_consultaPacientes_V_1_3_1 {
 
     public static void mtd_cargarDatosA_Modelo(DefaultTableModel modeloDefault) {
         modeloDefault.setRowCount(0);
