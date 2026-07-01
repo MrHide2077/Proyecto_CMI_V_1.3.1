@@ -273,6 +273,106 @@ public class Frm_consultaMEDinventarios extends javax.swing.JInternalFrame {
 
     private void mtd_cargarTabla() {
         Clases.Cls_consultaMEDinventario.mtd_cargarDatosA_Modelo((DefaultTableModel) tab_consultaMEDinventarios.getModel());
+
+        try {
+            javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) tab_consultaMEDinventarios.getModel();
+            java.util.Date hoy = new java.util.Date();
+
+            java.util.Calendar calLimite = java.util.Calendar.getInstance();
+            calLimite.setTime(hoy);
+            calLimite.add(java.util.Calendar.MONTH, 3);
+            java.util.Date fechaLimite3Meses = calLimite.getTime();
+
+            for (int i = 0; i < modelo.getRowCount(); i++) {
+                Object valorFecha = modelo.getValueAt(i, 7);
+                Object idInterno = modelo.getValueAt(i, 0);
+
+                if (valorFecha != null && !valorFecha.toString().trim().isEmpty()) {
+                    String strFecha = valorFecha.toString().trim();
+                    java.util.Date fechaVence = null;
+
+                    if (strFecha.contains("-")) {
+                        fechaVence = new java.text.SimpleDateFormat("yyyy-MM-dd").parse(strFecha);
+                    } else {
+                        fechaVence = sdf.parse(strFecha);
+                    }
+
+                    if (fechaVence != null) {
+                        if (fechaVence.before(hoy)) {
+                            javax.swing.JOptionPane.showMessageDialog(null, "Registro : " + idInterno + " Vencido");
+                        } else if (fechaVence.before(fechaLimite3Meses)) {
+                            javax.swing.JOptionPane.showMessageDialog(null, "Registro : " + idInterno + " Cercano a Vencer");
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+        }
+
+        tab_consultaMEDinventarios.setDefaultRenderer(Object.class, new javax.swing.table.DefaultTableCellRenderer() {
+            @Override
+            public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
+                    boolean isSelected, boolean hasFocus, int row, int column) {
+
+                java.awt.Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+                if (isSelected) {
+                    return c;
+                }
+
+                try {
+                    Object valorFecha = table.getValueAt(row, 7);
+
+                    if (valorFecha != null && !valorFecha.toString().trim().isEmpty()) {
+                        String strFecha = valorFecha.toString().trim();
+                        java.util.Date fechaVence = null;
+
+                        try {
+                            if (strFecha.contains("-")) {
+                                fechaVence = new java.text.SimpleDateFormat("yyyy-MM-dd").parse(strFecha);
+                            } else {
+                                fechaVence = sdf.parse(strFecha);
+                            }
+                        } catch (Exception e) {
+                            try {
+                                fechaVence = sdf.parse(strFecha);
+                            } catch (StringIndexOutOfBoundsException ex) {
+                            }
+                        }
+
+                        if (fechaVence != null) {
+                            java.util.Date hoy = new java.util.Date();
+
+                            java.util.Calendar calLimiteAnuncio = java.util.Calendar.getInstance();
+                            calLimiteAnuncio.setTime(hoy);
+                            calLimiteAnuncio.add(java.util.Calendar.MONTH, 3);
+                            java.util.Date fechaLimite3Meses = calLimiteAnuncio.getTime();
+
+                            if (fechaVence.before(hoy)) {
+                                c.setBackground(new java.awt.Color(255, 200, 200));
+                                c.setForeground(java.awt.Color.RED);
+                            } else if (fechaVence.before(fechaLimite3Meses)) {
+                                c.setBackground(new java.awt.Color(255, 255, 180));
+                                c.setForeground(new java.awt.Color(130, 100, 0));
+                            } else {
+                                c.setBackground(java.awt.Color.WHITE);
+                                c.setForeground(java.awt.Color.BLACK);
+                            }
+                        } else {
+                            c.setBackground(java.awt.Color.WHITE);
+                            c.setForeground(java.awt.Color.BLACK);
+                        }
+                    } else {
+                        c.setBackground(java.awt.Color.WHITE);
+                        c.setForeground(java.awt.Color.BLACK);
+                    }
+                } catch (Exception e) {
+                    c.setBackground(java.awt.Color.WHITE);
+                    c.setForeground(java.awt.Color.BLACK);
+                }
+                return c;
+            }
+        });
     }
 
     private void mtd_encabezado() {
