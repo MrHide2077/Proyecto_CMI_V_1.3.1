@@ -240,7 +240,7 @@ public class Frm_consultaPacientes_V1_3_1 extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txt_tipoPaciente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(26, 26, 26))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(jButton1)
@@ -459,11 +459,9 @@ public class Frm_consultaPacientes_V1_3_1 extends javax.swing.JInternalFrame {
                 tab_consultaPacientes.setValueAt(txt_tipoPaciente.getSelectedItem().toString(), selecFila, 9);
 
                 if (objetoAct.mtd_guardar()) {
-                    JOptionPane.showMessageDialog(null, "Registro Actualizado Correctamente");
+                    JOptionPane.showMessageDialog(null, "Registro : "+objetoAct.getPcs_idInterno()+ " Actualizado Correctamente");
                     mtd_limpieza();
                 }
-                JOptionPane.showMessageDialog(null, "Registro Actualizado Correctamente");
-                mtd_limpieza();
             } else {
                 if (mtd_duplicado() == false) {
                     Clases.Cls_registroPacientesV_3_1 objeto = new Clases.Cls_registroPacientesV_3_1(txt_CiPasaporte.getText().trim(), txt_apellidos.getText().trim(), txt_nombres.getText().trim(), txt_genero.getSelectedItem().toString(), formatoFecha.format(txt_fechaNacimiento.getDate()), txt_telefono.getText().trim(), txt_correo.getText().trim(), txt_observa.getText().trim(), txt_tipoPaciente.getSelectedItem().toString());

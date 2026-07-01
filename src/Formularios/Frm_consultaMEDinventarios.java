@@ -4,6 +4,7 @@
  */
 package Formularios;
 
+import java.awt.HeadlessException;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -306,7 +307,7 @@ public class Frm_consultaMEDinventarios extends javax.swing.JInternalFrame {
                     }
                 }
             }
-        } catch (Exception e) {
+        } catch (HeadlessException | ParseException e) {
         }
 
         tab_consultaMEDinventarios.setDefaultRenderer(Object.class, new javax.swing.table.DefaultTableCellRenderer() {
@@ -333,7 +334,7 @@ public class Frm_consultaMEDinventarios extends javax.swing.JInternalFrame {
                             } else {
                                 fechaVence = sdf.parse(strFecha);
                             }
-                        } catch (Exception e) {
+                        } catch (ParseException e) {
                             try {
                                 fechaVence = sdf.parse(strFecha);
                             } catch (StringIndexOutOfBoundsException ex) {
@@ -366,7 +367,7 @@ public class Frm_consultaMEDinventarios extends javax.swing.JInternalFrame {
                         c.setBackground(java.awt.Color.WHITE);
                         c.setForeground(java.awt.Color.BLACK);
                     }
-                } catch (Exception e) {
+                } catch (ParseException e) {
                     c.setBackground(java.awt.Color.WHITE);
                     c.setForeground(java.awt.Color.BLACK);
                 }
@@ -444,7 +445,7 @@ public class Frm_consultaMEDinventarios extends javax.swing.JInternalFrame {
             }
         } catch (ParseException e) {
             JOptionPane.showMessageDialog(null, "Error en el Formato de Fecha: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e) {
+        } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null, "Ocurrió un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed

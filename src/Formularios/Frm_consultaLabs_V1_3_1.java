@@ -328,8 +328,8 @@ public class Frm_consultaLabs_V1_3_1 extends javax.swing.JInternalFrame {
         try {
             if (filaSel != -1) {
                 txt_idInterno.setText(tab_consulLabs.getValueAt(filaSel, 0).toString());
-                txt_ruc.setText(tab_consulLabs.getValueAt(filaSel, 2).toString());
-                txt_nombComer.setText(tab_consulLabs.getValueAt(filaSel, 3).toString());
+                txt_ruc.setText(tab_consulLabs.getValueAt(filaSel, 1).toString());
+                txt_nombComer.setText(tab_consulLabs.getValueAt(filaSel, 2).toString());
                 txt_contactoPrinc.setText(tab_consulLabs.getValueAt(filaSel, 3).toString());
                 txt_numContact.setText(tab_consulLabs.getValueAt(filaSel, 4).toString());
                 txt_correo.setText(tab_consulLabs.getValueAt(filaSel, 5).toString());

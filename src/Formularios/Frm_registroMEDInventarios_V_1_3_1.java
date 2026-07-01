@@ -83,6 +83,7 @@ public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFra
 
         btn_Blab.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btn_Blab.setText("B");
+        btn_Blab.addActionListener(this::btn_BlabActionPerformed);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel5.setText("Presentación :");
@@ -488,6 +489,13 @@ public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFra
             JOptionPane.showMessageDialog(null, "Error al Guardar Datos: " + e.getMessage());
         }
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btn_BlabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BlabActionPerformed
+        // TODO add your handling code here:
+        if (objeto.mtd_buscar()) {
+            txt_lab.setText(objeto.getInMED_nombComer());
+        }
+    }//GEN-LAST:event_btn_BlabActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
