@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 Módulo de reportes: Generación de reportes estadísticos avanzados.
+=======
+Módulos extra: Implementación de la fase de pruebas del sistema.
+>>>>>>> Modulos-extra
