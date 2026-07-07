@@ -91,49 +91,70 @@ public class Cls_emitirFactura_CMI_V_1_3_1 extends Cls_registroPacientesV_3_1 im
     public void setFac_precioServ(double fac_precioServ) {this.fac_precioServ = fac_precioServ;}
     public void setFac_total(double fac_total) {this.fac_total = fac_total;}
 
+    
     @Override
-    public boolean mtd_guardar() {
-        boolean ban = false;
-        if (seleccionado.showDialog(null, "Guardar Archivo .txt") == JFileChooser.APPROVE_OPTION) {
-            archivo = seleccionado.getSelectedFile();
-            
-            // ✨ OPTIMIZACIÓN: Si el archivo no termina en .txt se lo agrega automáticamente
-            if (!archivo.getName().endsWith(".txt")) {
-                archivo = new java.io.File(archivo.getParentFile(), archivo.getName() + ".txt");
-            }
-            
-            if (archivo.exists()) {
-                archivo.delete();
-            }
-            
-            try {
-                archivo.createNewFile();
-                escribir = new FileWriter(archivo, true);
-                linea = new PrintWriter(escribir);
+public boolean mtd_guardar() {
+    boolean ban = false;
+    if (seleccionado.showDialog(null, "Guardar Archivo .txt") == JFileChooser.APPROVE_OPTION) {
+        archivo = seleccionado.getSelectedFile();
+        
+        // ✨ OPTIMIZACIÓN: Si el archivo no termina en .txt se lo agrega automáticamente
+        if (!archivo.getName().endsWith(".txt")) {
+            archivo = new java.io.File(archivo.getParentFile(), archivo.getName() + ".txt");
+        }
+        
+        if (archivo.exists()) {
+            archivo.delete();
+        }
+        
+        try {
+            archivo.createNewFile();
+            escribir = new FileWriter(archivo, true);
+            linea = new PrintWriter(escribir);
 
-                linea.println("N.Factura:" + this.getFac_idInterno());
-                linea.println("Apellidos:" + this.getPcs_apellidos());
-                linea.println("Nombres:" + this.getPcs_nombres());
-                linea.println("CI/Pasaporte:" + this.getPcs_CiPasaporte());
-                linea.println("Fecha de Emision:" + this.getFac_fechaEmision());
-                linea.println("Servicios:" + this.getFac_nomServ()); 
-                linea.println("Total:" + this.getFac_total());
+            linea.println("==========================================================");
+            linea.println("                CENTRO MÉDICO INTEGRAL (CMI)              ");
+            linea.println("         Dirección: Vargas Machuca, Cuenca, Ecuador       ");
+            linea.println("          Telf: 098 780 6534  /  +593 98 780 6534         ");
+            linea.println("==========================================================");
+            linea.println("                FACTURA / COMPROBANTE DE PAGO             ");
+            linea.println("==========================================================");
+            linea.println(" N.Factura      : " + this.getFac_idInterno());
+            linea.println(" Fecha de Emisión: " + this.getFac_fechaEmision());
+            linea.println("==========================================================");
+            linea.println(" DATOS DEL PACIENTE / CLIENTE                             ");
+            linea.println("----------------------------------------------------------");
+            linea.println(" Nombres        : " + this.getPcs_nombres());
+            linea.println(" Apellidos      : " + this.getPcs_apellidos());
+            linea.println(" CI/Pasaporte   : " + this.getPcs_CiPasaporte());
+            linea.println("----------------------------------------------------------");
+            linea.println(" DETALLE DE SERVICIOS ADQUIRIDOS                          ");
+            linea.println("----------------------------------------------------------");
+            linea.println(" Servicios      : " + this.getFac_nomServ()); 
+            linea.println("----------------------------------------------------------");
+            linea.println(" TOTAL A PAGAR  : $" + this.getFac_total());
+            linea.println("==========================================================");
+            linea.println(" Horarios de Atención CMI:                                ");
+            linea.println(" Lun - Vie: 8 AM - 7 PM  |  Sáb: 8 AM - 12 PM             ");
+            linea.println("----------------------------------------------------------");
+            linea.println("       Powered by Bio_InGen - Mr Hyde Industries          ");
+            linea.println("==========================================================");
 
-                linea.close();
-                escribir.close();
-                ban = true;
+            linea.close();
+            escribir.close();
+            ban = true;
 
-                JOptionPane.showMessageDialog(null, "Archivo guardado correctamente");
+            JOptionPane.showMessageDialog(null, "Archivo guardado correctamente");
 
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Error al guardar: " + ex.getMessage());
-                ban = false;
-            }
-        } else {
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Error al guardar: " + ex.getMessage());
             ban = false;
         }
-        return ban;
+    } else {
+        ban = false;
     }
+    return ban;
+}
  
     @Override
 public boolean mtd_buscar() {

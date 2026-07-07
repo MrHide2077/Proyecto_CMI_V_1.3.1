@@ -60,84 +60,120 @@ public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFra
         jScrollPane1 = new javax.swing.JScrollPane();
         tab_regisMedInv = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(245, 247, 248));
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setMinimumSize(new java.awt.Dimension(1280, 680));
         setPreferredSize(new java.awt.Dimension(1280, 680));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 150, 136));
         jLabel2.setText("Registro de Muestras Médicas");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(66, 66, 66));
         jLabel1.setText("N. Comercial :");
 
         txt_nombComer.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txt_nombComer.setForeground(new java.awt.Color(66, 66, 66));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(66, 66, 66));
         jLabel3.setText("Principio Activo :");
 
         txt_princAct.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txt_princAct.setForeground(new java.awt.Color(66, 66, 66));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(66, 66, 66));
         jLabel4.setText("Laboratorio :");
 
         txt_lab.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txt_lab.setForeground(new java.awt.Color(66, 66, 66));
 
+        btn_Blab.setBackground(new java.awt.Color(0, 150, 136));
         btn_Blab.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btn_Blab.setText("B");
+        btn_Blab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos_Fondos/search.png"))); // NOI18N
         btn_Blab.addActionListener(this::btn_BlabActionPerformed);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(66, 66, 66));
         jLabel5.setText("Presentación :");
 
         txt_present.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txt_present.setForeground(new java.awt.Color(66, 66, 66));
         txt_present.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Seleccione---", "Tabletas/Cápsulas", "Ampollas", "Frasco/Jarabe", "Tubo/Crema", "Sachet/Sobre", "Dispositivo/Inhalador", " " }));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(66, 66, 66));
         jLabel6.setText("Unidades/Dosis :");
 
         txt_unitDosis.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txt_unitDosis.setForeground(new java.awt.Color(66, 66, 66));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(66, 66, 66));
         jLabel7.setText("F. Ingreso :");
 
+        txt_fechaIngreso.setForeground(new java.awt.Color(66, 66, 66));
         txt_fechaIngreso.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(66, 66, 66));
         jLabel8.setText("F. Vencimiento :");
 
+        txt_fechaVence.setForeground(new java.awt.Color(66, 66, 66));
         txt_fechaVence.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(66, 66, 66));
         jLabel9.setText("Lote Interno :");
 
         txt_loteInt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txt_loteInt.setForeground(new java.awt.Color(66, 66, 66));
         txt_loteInt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Seleccione---", "Analgésicos/Antiinflamatorios", "Antibióticos", "Gastrointestinales", "Probióticos", "Respiratorios/Antihistamínicos", "Misceláneos" }));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(66, 66, 66));
         jLabel10.setText("Lote Fab :");
 
         txt_loteFab.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txt_loteFab.setForeground(new java.awt.Color(66, 66, 66));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(66, 66, 66));
         jLabel11.setText("Cantidad :");
 
         txt_cantidad.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txt_cantidad.setForeground(new java.awt.Color(66, 66, 66));
 
+        jButton2.setBackground(new java.awt.Color(0, 150, 136));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos_Fondos/more.png"))); // NOI18N
         jButton2.setText("Agregar");
         jButton2.addActionListener(this::jButton2ActionPerformed);
 
+        jButton3.setBackground(new java.awt.Color(0, 150, 136));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos_Fondos/edit.png"))); // NOI18N
         jButton3.setText("Editar");
         jButton3.addActionListener(this::jButton3ActionPerformed);
 
+        jButton4.setBackground(new java.awt.Color(0, 150, 136));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos_Fondos/bin.png"))); // NOI18N
         jButton4.setText("Eliminar");
         jButton4.addActionListener(this::jButton4ActionPerformed);
 
+        jButton5.setBackground(new java.awt.Color(0, 150, 136));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos_Fondos/sav (1).png"))); // NOI18N
         jButton5.setText("Guardar");
         jButton5.addActionListener(this::jButton5ActionPerformed);
 
+        tab_regisMedInv.setBackground(new java.awt.Color(255, 255, 255));
         tab_regisMedInv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -146,6 +182,7 @@ public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFra
 
             }
         ));
+        tab_regisMedInv.setSelectionBackground(new java.awt.Color(137, 190, 190));
         jScrollPane1.setViewportView(tab_regisMedInv);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,17 +196,8 @@ public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFra
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton4))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3)
@@ -184,7 +212,7 @@ public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFra
                                     .addComponent(jLabel11))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_loteFab, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                    .addComponent(txt_loteFab)
                                     .addComponent(txt_cantidad)
                                     .addComponent(txt_loteInt, 0, 1, Short.MAX_VALUE)
                                     .addComponent(txt_fechaVence, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
@@ -194,10 +222,21 @@ public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFra
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(txt_lab, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btn_Blab, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                                        .addComponent(btn_Blab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(txt_princAct)
-                                    .addComponent(txt_nombComer))))))
-                .addGap(18, 18, 18)
+                                    .addComponent(txt_nombComer)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton4)
+                                .addGap(6, 6, 6)))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(120, 120, 120)))
                 .addComponent(jScrollPane1)
                 .addContainerGap())
         );
@@ -256,7 +295,7 @@ public class Frm_registroMEDInventarios_V_1_3_1 extends javax.swing.JInternalFra
                             .addComponent(jButton4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton5)
-                        .addGap(0, 82, Short.MAX_VALUE))
+                        .addGap(0, 83, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );

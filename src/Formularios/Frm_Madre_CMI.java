@@ -27,6 +27,7 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -43,7 +44,17 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
 
         desktopPane.setPreferredSize(new java.awt.Dimension(1280, 720));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos_Fondos/Fondo_CMI_Final (1).jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        desktopPane.add(jLabel1);
+        jLabel1.setBounds(0, 0, 1280, 720);
+
+        menuBar.setBackground(new java.awt.Color(66, 66, 66));
+        menuBar.setForeground(new java.awt.Color(66, 66, 66));
+
+        jMenu1.setForeground(new java.awt.Color(66, 66, 66));
         jMenu1.setText("Base de Datos");
+        jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jMenu1.addActionListener(this::jMenu1ActionPerformed);
 
         jMenuItem1.setText("Registro de Pacientes");
@@ -64,7 +75,9 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
 
         menuBar.add(jMenu1);
 
+        jMenu2.setForeground(new java.awt.Color(66, 66, 66));
         jMenu2.setText("Inventarios");
+        jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
 
         jMenuItem5.setText("Registro de Medicinas");
         jMenuItem5.addActionListener(this::jMenuItem5ActionPerformed);
@@ -76,7 +89,9 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
 
         menuBar.add(jMenu2);
 
+        jMenu3.setForeground(new java.awt.Color(66, 66, 66));
         jMenu3.setText("Facturación");
+        jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
 
         jMenuItem7.setText("Emitir Factura");
         jMenuItem7.addActionListener(this::jMenuItem7ActionPerformed);
@@ -94,7 +109,7 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
         );
 
         pack();
@@ -190,6 +205,7 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

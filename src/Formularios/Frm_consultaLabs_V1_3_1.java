@@ -54,6 +54,10 @@ public class Frm_consultaLabs_V1_3_1 extends javax.swing.JInternalFrame {
         tab_consulLabs = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(245, 247, 248));
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setMinimumSize(new java.awt.Dimension(1280, 680));
         setPreferredSize(new java.awt.Dimension(1280, 680));
 
@@ -112,21 +116,25 @@ public class Frm_consultaLabs_V1_3_1 extends javax.swing.JInternalFrame {
 
         jButton1.setBackground(new java.awt.Color(0, 150, 136));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos_Fondos/more.png"))); // NOI18N
         jButton1.setText("Actualizar");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
         jButton2.setBackground(new java.awt.Color(0, 150, 136));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos_Fondos/edit.png"))); // NOI18N
         jButton2.setText("Editar");
         jButton2.addActionListener(this::jButton2ActionPerformed);
 
         jButton3.setBackground(new java.awt.Color(0, 150, 136));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos_Fondos/bin.png"))); // NOI18N
         jButton3.setText("Eliminar");
         jButton3.addActionListener(this::jButton3ActionPerformed);
 
         jButton4.setBackground(new java.awt.Color(0, 150, 136));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos_Fondos/search.png"))); // NOI18N
         jButton4.setText("Buscar");
         jButton4.addActionListener(this::jButton4ActionPerformed);
 
@@ -139,6 +147,7 @@ public class Frm_consultaLabs_V1_3_1 extends javax.swing.JInternalFrame {
 
             }
         ));
+        tab_consulLabs.setSelectionBackground(new java.awt.Color(137, 190, 190));
         jScrollPane1.setViewportView(tab_consulLabs);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,7 +230,7 @@ public class Frm_consultaLabs_V1_3_1 extends javax.swing.JInternalFrame {
                             .addComponent(jButton2)
                             .addComponent(jButton3)
                             .addComponent(jButton1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton4)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE))
