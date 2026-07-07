@@ -39,6 +39,7 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,10 +93,15 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
         jMenu3.setForeground(new java.awt.Color(66, 66, 66));
         jMenu3.setText("Facturación");
         jMenu3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jMenu3.addActionListener(this::jMenu3ActionPerformed);
 
         jMenuItem7.setText("Emitir Factura");
         jMenuItem7.addActionListener(this::jMenuItem7ActionPerformed);
         jMenu3.add(jMenuItem7);
+
+        jMenuItem8.setText("Reporte Ingresos Mensuales");
+        jMenuItem8.addActionListener(this::jMenuItem8ActionPerformed);
+        jMenu3.add(jMenuItem8);
 
         menuBar.add(jMenu3);
 
@@ -168,6 +174,18 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
         objeto3.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        Formularios.Frm_consultaIngresosMes objeto3_1=new Formularios.Frm_consultaIngresosMes();
+        desktopPane.add(objeto3_1);
+        objeto3_1.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -216,6 +234,7 @@ public class Frm_Madre_CMI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
 
