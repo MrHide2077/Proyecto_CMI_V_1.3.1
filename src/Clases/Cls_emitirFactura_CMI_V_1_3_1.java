@@ -95,53 +95,52 @@ public class Cls_emitirFactura_CMI_V_1_3_1 extends Cls_registroPacientesV_3_1 im
     @Override
 public boolean mtd_guardar() {
     boolean ban = false;
-    if (seleccionado.showDialog(null, "Guardar Archivo .txt") == JFileChooser.APPROVE_OPTION) {
-        archivo = seleccionado.getSelectedFile();
+    if (getSeleccionado().showDialog(null, "Guardar Archivo .txt") == JFileChooser.APPROVE_OPTION) {
+        archivo = getSeleccionado().getSelectedFile();
         
-        // ✨ OPTIMIZACIÓN: Si el archivo no termina en .txt se lo agrega automáticamente
         if (!archivo.getName().endsWith(".txt")) {
-            archivo = new java.io.File(archivo.getParentFile(), archivo.getName() + ".txt");
+            archivo = new java.io.File(getArchivo().getParentFile(), getArchivo().getName() + ".txt");
         }
         
-        if (archivo.exists()) {
-            archivo.delete();
+        if (getArchivo().exists()) {
+            getArchivo().delete();
         }
         
         try {
-            archivo.createNewFile();
-            escribir = new FileWriter(archivo, true);
-            linea = new PrintWriter(escribir);
+            getArchivo().createNewFile();
+            escribir = new FileWriter(getArchivo(), true);
+            linea = new PrintWriter(getEscribir());
 
-            linea.println("==========================================================");
-            linea.println("                CENTRO MÉDICO INTEGRAL (CMI)              ");
-            linea.println("         Dirección: Vargas Machuca, Cuenca, Ecuador       ");
-            linea.println("          Telf: 098 780 6534  /  +593 98 780 6534         ");
-            linea.println("==========================================================");
-            linea.println("                FACTURA / COMPROBANTE DE PAGO             ");
-            linea.println("==========================================================");
-            linea.println(" N.Factura      : " + this.getFac_idInterno());
-            linea.println(" Fecha de Emisión: " + this.getFac_fechaEmision());
-            linea.println("==========================================================");
-            linea.println(" DATOS DEL PACIENTE / CLIENTE                             ");
-            linea.println("----------------------------------------------------------");
-            linea.println(" Nombres        : " + this.getPcs_nombres());
-            linea.println(" Apellidos      : " + this.getPcs_apellidos());
-            linea.println(" CI/Pasaporte   : " + this.getPcs_CiPasaporte());
-            linea.println("----------------------------------------------------------");
-            linea.println(" DETALLE DE SERVICIOS ADQUIRIDOS                          ");
-            linea.println("----------------------------------------------------------");
-            linea.println(" Servicios      : " + this.getFac_nomServ()); 
-            linea.println("----------------------------------------------------------");
-            linea.println(" TOTAL A PAGAR  : $" + this.getFac_total());
-            linea.println("==========================================================");
-            linea.println(" Horarios de Atención CMI:                                ");
-            linea.println(" Lun - Vie: 8 AM - 7 PM  |  Sáb: 8 AM - 12 PM             ");
-            linea.println("----------------------------------------------------------");
-            linea.println("       Powered by Bio_InGen - Mr Hyde Industries          ");
-            linea.println("==========================================================");
+            getLinea().println("==========================================================");
+            getLinea().println("                CENTRO MÉDICO INTEGRAL (CMI)              ");
+            getLinea().println("         Dirección: Vargas Machuca, Cuenca, Ecuador       ");
+            getLinea().println("          Telf: 098 780 6534  /  +593 98 780 6534         ");
+            getLinea().println("==========================================================");
+            getLinea().println("                FACTURA / COMPROBANTE DE PAGO             ");
+            getLinea().println("==========================================================");
+            getLinea().println(" N.Factura      : " + this.getFac_idInterno());
+            getLinea().println(" Fecha de Emisión: " + this.getFac_fechaEmision());
+            getLinea().println("==========================================================");
+            getLinea().println(" DATOS DEL PACIENTE / CLIENTE                             ");
+            getLinea().println("----------------------------------------------------------");
+            getLinea().println(" Nombres        : " + this.getPcs_nombres());
+            getLinea().println(" Apellidos      : " + this.getPcs_apellidos());
+            getLinea().println(" CI/Pasaporte   : " + this.getPcs_CiPasaporte());
+            getLinea().println("----------------------------------------------------------");
+            getLinea().println(" DETALLE DE SERVICIOS ADQUIRIDOS                          ");
+            getLinea().println("----------------------------------------------------------");
+            getLinea().println(" Servicios      : " + this.getFac_nomServ()); 
+            getLinea().println("----------------------------------------------------------");
+            getLinea().println(" TOTAL A PAGAR  : $" + this.getFac_total());
+            getLinea().println("==========================================================");
+            getLinea().println(" Horarios de Atención CMI:                                ");
+            getLinea().println(" Lun - Vie: 8 AM - 7 PM  |  Sáb: 8 AM - 12 PM             ");
+            getLinea().println("----------------------------------------------------------");
+            getLinea().println("       Powered by Bio_InGen - Mr Hyde Industries          ");
+            getLinea().println("==========================================================");
 
-            linea.close();
-            escribir.close();
+            getLinea().close();
+            getEscribir().close();
             ban = true;
 
             JOptionPane.showMessageDialog(null, "Archivo guardado correctamente");
@@ -160,9 +159,9 @@ public boolean mtd_guardar() {
 public boolean mtd_buscar() {
     boolean ban = true;
     try {
-        if (seleccionado.showDialog(null, "Abrir Archivo .txt") == JFileChooser.APPROVE_OPTION) {
-            archivo = seleccionado.getSelectedFile();
-            FileReader reader = new FileReader(archivo);
+        if (getSeleccionado().showDialog(null, "Abrir Archivo .txt") == JFileChooser.APPROVE_OPTION) {
+            archivo = getSeleccionado().getSelectedFile();
+            FileReader reader = new FileReader(getArchivo());
             BufferedReader bufferedReader = new BufferedReader(reader);
             String line;
 
@@ -203,10 +202,10 @@ public boolean mtd_buscar() {
     @Override
     public boolean mtd_eliminar() {
         boolean ban = false;
-        if (seleccionado.showDialog(null, "Eliminar Archivo .txt") == JFileChooser.APPROVE_OPTION) {
-            archivo = seleccionado.getSelectedFile();
-            if (archivo.exists()) {
-                archivo.delete();
+        if (getSeleccionado().showDialog(null, "Eliminar Archivo .txt") == JFileChooser.APPROVE_OPTION) {
+            archivo = getSeleccionado().getSelectedFile();
+            if (getArchivo().exists()) {
+                getArchivo().delete();
                 ban = true;
                 JOptionPane.showMessageDialog(null, "El Archivo se elimino correctamente");
             } else {

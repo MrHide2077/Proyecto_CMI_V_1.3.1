@@ -4,6 +4,13 @@
  */
 package Formularios;
 
+import Clases.Cls_ConsultaIngresosMes;
+import Clases.Cls_emitirFactura_CMI_V_1_3_1;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+
+
 /**
  *
  * @author diego
@@ -13,8 +20,13 @@ public class Frm_consultaIngresosMes extends javax.swing.JInternalFrame {
     /**
      * Creates new form Frm_consultaIngresosMes
      */
+    
+    Cls_ConsultaIngresosMes objConsulta = new Cls_ConsultaIngresosMes();
+    String rutaFacturas = "C:/Users/diego/OneDrive/Desktop/Ucato/Base de Datos CMI/Facturas/";
+    
     public Frm_consultaIngresosMes() {
         initComponents();
+        mtd_encabezado();
     }
 
     /**
@@ -26,14 +38,13 @@ public class Frm_consultaIngresosMes extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
         txt_mes = new javax.swing.JComboBox<>();
         txt_año = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txt_ingreMes = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txt_gananciaNeta = new javax.swing.JTextField();
+        txt_TotalRecaudado = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         txt_numFact = new javax.swing.JTextField();
@@ -52,10 +63,13 @@ public class Frm_consultaIngresosMes extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         txt_total = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tab_Facturas = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(245, 247, 248));
         setClosable(true);
@@ -66,13 +80,9 @@ public class Frm_consultaIngresosMes extends javax.swing.JInternalFrame {
         setMinimumSize(new java.awt.Dimension(1280, 680));
         setPreferredSize(new java.awt.Dimension(1280, 680));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 150, 136));
-        jLabel2.setText("Ingresos por Mes");
-
         txt_mes.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txt_mes.setForeground(new java.awt.Color(66, 66, 66));
-        txt_mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Seleccione el Mes---", "Enero ", "Febrero  ", "Marzo  ", "Abril  ", "Mayo  ", "Junio  ", "Julio  ", "Agosto ", "Septiembre  ", "Octubre  ", "Noviembre ", "Diciembre" }));
+        txt_mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Seleccione el Mes---", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
 
         txt_año.setForeground(new java.awt.Color(66, 66, 66));
         txt_año.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Seleccione el Año---", "2027", "2026", "2025", "2024", "2023", "2022", "2021", "2020", "" }));
@@ -92,43 +102,49 @@ public class Frm_consultaIngresosMes extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 150, 136));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Ganancias Netas :");
+        jLabel6.setText("Total Recaudado :");
 
-        txt_gananciaNeta.setEditable(false);
-        txt_gananciaNeta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txt_TotalRecaudado.setEditable(false);
+        txt_TotalRecaudado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(0, 150, 136));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jButton1.setText("Buscar");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(66, 66, 66));
         jLabel7.setText("N. Factura :");
 
+        txt_numFact.setEditable(false);
         txt_numFact.setForeground(new java.awt.Color(66, 66, 66));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(66, 66, 66));
         jLabel5.setText("F. Emision :");
 
+        txt_fechaEmision.setEditable(false);
         txt_fechaEmision.setForeground(new java.awt.Color(66, 66, 66));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(66, 66, 66));
         jLabel8.setText("CI/Pasaporte:");
 
+        txt_CIPass.setEditable(false);
         txt_CIPass.setForeground(new java.awt.Color(66, 66, 66));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(66, 66, 66));
         jLabel9.setText("Apellidos :");
 
+        txt_apellidos.setEditable(false);
         txt_apellidos.setForeground(new java.awt.Color(66, 66, 66));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(66, 66, 66));
         jLabel10.setText("Servicios :");
 
+        txt_serv.setEditable(false);
         txt_serv.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txt_serv.setForeground(new java.awt.Color(66, 66, 66));
 
@@ -136,6 +152,7 @@ public class Frm_consultaIngresosMes extends javax.swing.JInternalFrame {
         jLabel11.setForeground(new java.awt.Color(66, 66, 66));
         jLabel11.setText("Subtotal :");
 
+        txt_subt.setEditable(false);
         txt_subt.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txt_subt.setForeground(new java.awt.Color(66, 66, 66));
 
@@ -143,6 +160,7 @@ public class Frm_consultaIngresosMes extends javax.swing.JInternalFrame {
         jLabel12.setForeground(new java.awt.Color(66, 66, 66));
         jLabel12.setText("Descuento :");
 
+        txt_desc.setEditable(false);
         txt_desc.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txt_desc.setForeground(new java.awt.Color(66, 66, 66));
 
@@ -150,11 +168,12 @@ public class Frm_consultaIngresosMes extends javax.swing.JInternalFrame {
         jLabel13.setForeground(new java.awt.Color(66, 66, 66));
         jLabel13.setText("Total :");
 
+        txt_total.setEditable(false);
         txt_total.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         txt_total.setForeground(new java.awt.Color(66, 66, 66));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tab_Facturas.setBackground(new java.awt.Color(255, 255, 255));
+        tab_Facturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -162,117 +181,128 @@ public class Frm_consultaIngresosMes extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tab_Facturas.setSelectionBackground(new java.awt.Color(137, 190, 190));
+        tab_Facturas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tab_FacturasMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tab_Facturas);
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(66, 66, 66));
         jLabel14.setText("Año :");
 
+        jLabel3.setBackground(new java.awt.Color(245, 247, 248));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(66, 66, 66));
+        jLabel3.setForeground(new java.awt.Color(0, 150, 136));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Detalle de Factura");
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos_Fondos/Encabezado_CMI.jpg"))); // NOI18N
         jLabel15.setText("jLabel15");
 
+        jButton2.setBackground(new java.awt.Color(0, 150, 136));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jButton2.setText("Actualizar");
+        jButton2.addActionListener(this::jButton2ActionPerformed);
+
+        jButton3.setBackground(new java.awt.Color(0, 150, 136));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jButton3.setText("Eliminar");
+        jButton3.addActionListener(this::jButton3ActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(256, 256, 256)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_ingreMes))
-                        .addGap(66, 66, 66)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addComponent(txt_gananciaNeta, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(65, 65, 65))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel13))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_numFact)
+                                    .addComponent(txt_fechaEmision)
+                                    .addComponent(txt_CIPass)
+                                    .addComponent(txt_apellidos)
+                                    .addComponent(txt_serv)
+                                    .addComponent(txt_subt)
+                                    .addComponent(txt_desc)
+                                    .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_mes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_año, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton2)))
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txt_ingreMes, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_TotalRecaudado, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_numFact)
-                            .addComponent(txt_fechaEmision)
-                            .addComponent(txt_CIPass)
-                            .addComponent(txt_apellidos)
-                            .addComponent(txt_serv)
-                            .addComponent(txt_subt)
-                            .addComponent(txt_desc)
-                            .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(59, 59, 59))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel14))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txt_mes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txt_año, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap())
+            .addComponent(jSeparator1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_ingreMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_gananciaNeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txt_TotalRecaudado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
-                        .addGap(20, 20, 20)
+                        .addGap(7, 7, 7)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_año, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14))
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)))
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
@@ -309,18 +339,135 @@ public class Frm_consultaIngresosMes extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
                             .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 214, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(jButton3))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
                         .addContainerGap())))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    DefaultTableModel modelo;
+    
+    public void mtd_encabezado() {
+        String titulos[] = {"N. Factura", "F. Emisión", "CI / Pasaporte", "Paciente", "Total"};
+        modelo = new DefaultTableModel(null, titulos) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        tab_Facturas.setModel(modelo);
+    }
+    
+    public void mtd_limpieza() {
+        txt_numFact.setText("");
+        txt_fechaEmision.setText("");
+        txt_CIPass.setText("");
+        txt_apellidos.setText("");
+        txt_serv.setText("");
+        txt_subt.setText("");
+        txt_desc.setText("");
+        txt_total.setText("");
+    }
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if (txt_mes.getSelectedIndex() == 0 || txt_año.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Seleccione el Mes y Año para actualizar");
+            return;
+        }
+        String mes = txt_mes.getSelectedItem().toString();
+        String año = txt_año.getSelectedItem().toString();
+
+        objConsulta.mtd_cargarYFiltrarFacturas(rutaFacturas, mes, año);
+
+        DefaultTableModel modeloTabla = (DefaultTableModel) tab_Facturas.getModel();
+        objConsulta.mtd_actualizarTabla(modeloTabla);
+
+        txt_ingreMes.setText("$ " + String.format("%.2f", objConsulta.getCIM_totalFacturado()));
+        txt_TotalRecaudado.setText("$ " + String.format("%.2f", objConsulta.getCIM_totalRecaudado()));
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (txt_mes.getSelectedIndex() == 0 || txt_año.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Seleccione el Mes y Año a Consultar");
+            return;
+        }
+
+        String mes = txt_mes.getSelectedItem().toString();
+        String año = txt_año.getSelectedItem().toString();
+
+        objConsulta.mtd_cargarYFiltrarFacturas(rutaFacturas, mes, año);
+
+        DefaultTableModel modeloTabla = (DefaultTableModel) tab_Facturas.getModel();
+        objConsulta.mtd_actualizarTabla(modeloTabla);
+
+        txt_ingreMes.setText("$ " + String.format("%.2f", objConsulta.getCIM_totalFacturado()));
+        txt_TotalRecaudado.setText("$ " + String.format("%.2f", objConsulta.getCIM_totalRecaudado()));
+
+        if (objConsulta.getListaFacturasFiltro().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No se encontraron facturas en el periodo seleccionado");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int filaSeleccionada = tab_Facturas.getSelectedRow();
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una factura de la tabla para poder eliminarla");
+            return;
+        }
+
+        String idFactura = tab_Facturas.getValueAt(filaSeleccionada, 0).toString();
+
+        javax.swing.JPasswordField txtPassword = new javax.swing.JPasswordField();
+        int confirmacion = JOptionPane.showConfirmDialog(null, txtPassword,
+                "Ingrese la clave de Administrador para confirmar la eliminación:",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+
+        if (confirmacion == JOptionPane.OK_OPTION) {
+            String clave = new String(txtPassword.getPassword());
+
+            if (objConsulta.mtd_eliminarFacturaAdmin(rutaFacturas, idFactura, clave)) {
+                mtd_limpieza();
+                jButton1ActionPerformed(null);
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void tab_FacturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab_FacturasMouseClicked
+        // TODO add your handling code here:
+        int filaSeleccionada = tab_Facturas.getSelectedRow();
+
+        if (filaSeleccionada != -1) {
+            Cls_emitirFactura_CMI_V_1_3_1 fSelected = objConsulta.getListaFacturasFiltro().get(filaSeleccionada);
+
+            txt_numFact.setText(fSelected.getFac_idInterno());
+            txt_fechaEmision.setText(fSelected.getFac_fechaEmision());
+            txt_CIPass.setText(fSelected.getPcs_CiPasaporte());
+            txt_apellidos.setText(fSelected.getPcs_apellidos() + " " + fSelected.getPcs_nombres());
+            txt_serv.setText(fSelected.getFac_nomServ());
+
+            double totalVal = fSelected.getFac_total();
+
+            txt_subt.setText(String.format("%.2f", totalVal));
+            txt_desc.setText("0.00");
+            txt_total.setText(String.format("%.2f", totalVal));
+        }
+    }//GEN-LAST:event_tab_FacturasMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -328,7 +475,6 @@ public class Frm_consultaIngresosMes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -337,13 +483,14 @@ public class Frm_consultaIngresosMes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable tab_Facturas;
     private javax.swing.JTextField txt_CIPass;
+    private javax.swing.JTextField txt_TotalRecaudado;
     private javax.swing.JTextField txt_apellidos;
     private javax.swing.JComboBox<String> txt_año;
     private javax.swing.JTextField txt_desc;
     private javax.swing.JTextField txt_fechaEmision;
-    private javax.swing.JTextField txt_gananciaNeta;
     private javax.swing.JTextField txt_ingreMes;
     private javax.swing.JComboBox<String> txt_mes;
     private javax.swing.JTextField txt_numFact;

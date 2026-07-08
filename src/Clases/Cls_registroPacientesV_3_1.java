@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class Cls_registroPacientesV_3_1 implements int_GBE_CMI_V1_3_1 {
 
-    JFileChooser seleccionado = new JFileChooser();
+    private JFileChooser seleccionado = new JFileChooser();
     File archivo;
     FileWriter escribir;
     PrintWriter linea;
@@ -272,5 +272,21 @@ public class Cls_registroPacientesV_3_1 implements int_GBE_CMI_V1_3_1 {
             ban = false;
         }
         return ban;
+    }
+
+    public JFileChooser getSeleccionado() {
+        return seleccionado;
+    }
+
+    public File getArchivo() {
+        return archivo;
+    }
+
+    public FileWriter getEscribir() {
+        return escribir;
+    }
+
+    public PrintWriter getLinea() {
+        return linea;
     }
 }
