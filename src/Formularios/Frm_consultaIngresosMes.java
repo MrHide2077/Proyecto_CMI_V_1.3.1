@@ -209,7 +209,7 @@ public class Frm_consultaIngresosMes extends javax.swing.JInternalFrame {
 
         jButton3.setBackground(new java.awt.Color(0, 150, 136));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        jButton3.setText("Eliminar");
+        jButton3.setText("Anular");
         jButton3.addActionListener(this::jButton3ActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
